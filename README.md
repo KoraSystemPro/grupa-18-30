@@ -1,4 +1,4 @@
-# grupa-18:30
+# Grupa 18:30
 6,7 razred - grupa od 18:30
 
 [30/09/2019]
