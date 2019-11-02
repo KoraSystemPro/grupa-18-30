@@ -1,0 +1,15 @@
+body {
+	/* background-color: lightblue; */
+	background-image: url("tomato.png");
+	background-repeat: no-repeat;
+	/* repeat-x repeat-y norepeat*/
+	background-attachment: fixed;
+	/* scroll */
+	background-size: 20%;
+	background-position: center center;
+	
+	/*
+		background: lightblue url("tomato.png") no-repeat fixed center center
+	*/
+	
+}
