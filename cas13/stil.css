@@ -1,0 +1,88 @@
+#primer-margina{
+	border: 1px solid green;
+	/* margin: 50px; /* Namesta 50px kao marginu za sve 4 strane*/
+	
+	margin-top: 100px;
+	margin-bottom: 70px;
+	margin-right: 150px;
+	margin-left: 80px;
+	
+	/* margin: 25px 75px; /* gornji, donji = 25px  &  levi, desni = 75px */
+	/* margin: 25px 50px 75px; /* gornji = 25px  &  desni, levi = 50px  &  donji= 75px */
+	
+	/*
+	
+	auto - browser namesta sam marginu
+	_lenght_ - velicina u px, pt, cm, ...
+	% - Ukupan procenat od ukupne sirine elementa u kom se nalazi
+	inherit - Margina se nasledjuje od parent elementa
+	
+	*/
+	
+}
+
+#paragraf1 {
+	border: 1px solid black;
+	margin-bottom: 30px;
+	
+	/* padding: 50px; */
+	
+	padding-top: 30px;
+	padding-right: 100px;
+	padding-bottom: 50px;
+	padding-left: 30px
+	
+	/* Vaze iste notacije kao i za margine! */
+}
+
+#paragraf2 {
+	border: 3px solid black;
+	padding: 20px;
+	margin : 30px;
+	
+	outline: 10px groove lime;
+	/*
+	outline-style	stil
+	outline-color	boja
+	outline-width	debljina
+	outline-offset	
+	
+	*/
+	
+	outline-offset: 15px;
+}
+
+
+#paragraf3{
+	margin-top: 70px;
+	background-color: lightgray;
+	
+	height: 200px;
+	width: 50%;
+	
+	max-width: 1000px;
+	max-height: 300px;
+	
+	/*
+	auto
+	_length_  200px
+	%
+	inital
+	inherit
+	*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
