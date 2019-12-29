@@ -6,6 +6,12 @@ Za pitanja, šaljite ih na jedan od sledećih linkova:
   2. U chat na https://github.com/orgs/KoraSystemPro/teams/grupa-18-30 (samo kao ulogovan član grupe)
   3. Meni na e-mail: korasyspro@gmail.com
 
+[29/12/2019]
+Film se zove "Spirited Away"
+Možete da ga nađete na:
+https://yts.lt/
+(I DO NOT ENCOURAGE THIS TO BE HONEST, THIS IS FOR RESEARCH PURPOSES!)
+
 [24/12/2019]
 PODSETNIK!!!
 Imamo čas sledeći vikend 28.12. i 29.12.!
