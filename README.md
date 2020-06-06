@@ -18,9 +18,6 @@ Srećna Nova godina! ;)!
 
 [29/12/2019]
 Film se zove "Spirited Away"
-Možete da ga nađete na:
-https://yts.lt/
-(I DO NOT ENCOURAGE THIS TO BE HONEST, THIS IS FOR RESEARCH PURPOSES!)
 
 [24/12/2019]
 PODSETNIK!!!
