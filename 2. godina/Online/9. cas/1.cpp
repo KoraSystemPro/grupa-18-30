@@ -12,7 +12,7 @@ int main(){
 	string str3(5, '!'); 	
 	// Inicijalizuje str4 na "je pr", drugi argument predstavlja br. indeksa odakle krece citanje navedenog stringa,
 	//	a treci argument prestavlja br narednih karaktera koji se ucitavaju
-	string str4(str1, 7, 3); 
+	string str4(str1, 4, 5); 
 	
 	cout << "str1: " << str1 << endl;
 	cout << "str2: " << str2 << endl;
@@ -51,7 +51,7 @@ int main(){
 	
 	
 	string str6 = str1;
-	// str6 = str6 + "";
+	// str6 = str6 + "...";
 	str6.append(", vise ne!");
 	cout << "str6.append(\", vise ne!\"): " << str6 << endl;	// \" oznacava da se " koriste kao deo veceg stringa
 	
