@@ -6,6 +6,10 @@ Za pitanja, šaljite ih na jedan od sledećih linkova:
   2. U chat na https://github.com/orgs/KoraSystemPro/teams/grupa-18-30 (samo kao ulogovan član grupe)
   3. Meni na e-mail: korasyspro@gmail.com
 
+[15/06/2020]
+Dodat domaći. Možete ga pronaći u folderu 2.godina/Online, ili na linku:
+https://github.com/KoraSystemPro/grupa-18-30/blob/master/2.%20godina/Online/Domaci.txt
+
 [14/03/2020]
 Škola će raditi kako nalaže ministarstvo za sada, pratite naš sajt www.systempro.rs za obaveštenja o održavanju nastave i mogućim promenama.
 
