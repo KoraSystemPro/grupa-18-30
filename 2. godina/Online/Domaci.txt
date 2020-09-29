@@ -116,8 +116,6 @@ Stringovi:
 4. Napisati program koji briše uneti string i ispisuje prazan string na standardan izlaz kao i njegovu dužinu.
 5. Napisati program kojem se prvo sa ulaza unosi string "lozinka" i nakon toga traži ponovan unos stringa radi provere, ako su stringovi isti ispisati "Tačna lozinka!", ako nisu "Netacna lozinka!".
 6. Napisati program koji menja sva velika slova u mala slova za proizvoljan string.
-
-
 ==============================================================================================================
 BONUS:
 +++++++
