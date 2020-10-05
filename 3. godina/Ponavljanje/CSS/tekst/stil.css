@@ -1,0 +1,131 @@
+/*
+
+Struktura CSS-a
+
+selektor {   -- element, #id, .class
+    svjostva-1: vrednost-1;
+    ......
+    svjostva-N: vrednost-N;
+}
+
+*/
+
+p {             /* selektor za element */
+    color: aqua;
+        
+}
+
+#ime {          /* Selektor za id */
+    font-size: 16pt;
+    
+}
+                /* Selektor na klasu */
+.moja-klasa{
+    border: 1px solid black;
+    
+}
+
+
+
+/*
+<p>
+    Ovo je naslov
+    <h1>
+        Kao i ovaj paragraf
+    </h1>
+
+</p>
+
+    Kompozicija - Utice na sve <h1> koji se nalaze u <p>
+*/
+
+p h1 {
+    text-decoration: underline;
+        
+}
+
+
+/*
+    Utice na sve elemente u nizu odvojenim ','
+*/
+td, li, p, #neki_id, .moja_klasa{
+    border: 1px solid black;
+    
+}
+
+
+/* 
+<div>
+    <h2 class="moja-klasa">
+        <span>
+
+        </span>
+    </h2>
+</div>
+        Grupisanje - Nizanje vise elemenata koji pripadaju nekim klasama ili imaju neki id 
+        
+        Menja stil nad svim <span> (linijskim tekstovima) koji pripadaju svim <h2> tagovima koji pripadaju klasi "moja-klasa" koji pripadaju svim <div> tagovima
+*/
+div h2.moja-klasa span{
+    
+}
+
+
+----------------------------------------------------
+
+Nacin zadavanja pravila za stilizovanje:
+    1. Spoljasnji kaskadni list (odvojen HTML od CSS)
+        <link rel="stylesheet" type="text/css" href="adresa css-a">
+            a. Relativna adresa (od trenutnog direktorijuma)
+            b. Apsolutna (cela adresa C://Users/uname/..../stil.css)
+            c. URL
+    2. <style> Element  <style> ... </style>
+            Navodi se iskljucivo u okviru <head> elementa
+    3. style Atribut    <p style="color: blue;">
+            Ima najveci prioritet ako dolazi do konflikta
+
+
+----------------------------------------------------
+
+
+Rad sa bojama:
+    color:                  /* Boja teksta u okviru sadrzaja */
+    background-color:       /* Boja pozadine elementa */ 
+
+    1. ime boje - Red, Orange, Blue, Yellow, Black...
+    2. rgb(0, 0, 255) - 0-255 (RED, GREEN, BLUE)
+    3. rgba(0, 0, 255, 0.7) - 0-255 (RED, GREEN, BLUE, ALPHA)
+            ALPHA - prozirnost (0 - 1)
+                    0 - skroz providno
+                    1 - nije providno
+    4. kod boje - #0000FF (svake dve cifre predstavljaju redom RGB)
+
+
+----------------------------------------------------
+
+
+Stilizovanje teksta:
+    Velicina:
+        1. Centimetri               cm
+        2. Milimetri                mm
+        3. Inči                     in
+        4. Pikseli                  px
+        5. Tacke (vazi 1/72in)      pt   NAJVISE KORISCEN!!!
+        6. em (odnos vel. fonta)    em
+        7. %    50% = 0.5em
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
