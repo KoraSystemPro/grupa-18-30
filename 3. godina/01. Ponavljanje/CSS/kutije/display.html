@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        
+        // visibility ne uklanja HTML element fizicki sa stranice kao sto ga uklanja display: none, tako da on ostavlja "rupu".
+        
+        <style>
+            #omotac{
+                border: 1px solid black;
+                width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+                position: relative;
+                display: block;
+            }
+            #zeleni{
+                width: 400px;
+                height: 50px;
+                background-color: darkgreen;
+            }
+            #crveni{
+                width: 100px;
+                height: 200px;
+                background-color: darkred;
+                display: inline-block;
+                margin: 0px;
+            }
+            #zuti{
+                width: 300px;
+                height: 200px;
+                background-color: darkgoldenrod;
+                display: inline-block;
+                margin: 0px;
+            }
+            
+            #zuti:hover{
+                background-color: blueviolet;
+                
+            }
+            
+            #plavi{
+                width: 400px;
+                height: 50px;
+                background-color: darkblue;
+            }
+        
+        </style>
+    
+    </head>
+
+    <body>
+        <div id="omotac">
+            <div id="zeleni"></div>
+            <div id="crveni"></div><div id="zuti"></div>
+            <div id="plavi"></div>
+        </div>
+    
+    
+    </body>
+
+</html>
