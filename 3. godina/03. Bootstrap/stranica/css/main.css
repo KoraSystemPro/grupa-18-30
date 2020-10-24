@@ -1,0 +1,120 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    background: #30435D;
+}
+
+.navbar{
+    background-color: #B68385;
+}
+
+.nav-link, .navbar-brand{
+    color: black;
+}
+
+.navbar-collapse{
+    justify-content: flex-end;
+}
+
+.nav-link:hover, .navbar-brand:hover{
+    color: #7A63A1;
+}
+
+.navbar-toggler{
+    background: #fff; 
+}
+
+
+
+/* Header/Zaglavlje */
+.header{
+    height: 100vh;
+    position: relative;
+    background-image: url("../img/background/slika10.jpg");
+    
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.overlay{
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    
+    left: 0px;
+    top: 0px;
+    
+    background-color: rgba(0, 0, 0, 0.7)
+}
+
+.description{
+    position: absolute;
+    top: 30%;
+    margin: auto;
+    padding: 2em;
+}
+
+.description h1{
+    color: white;
+}
+
+.description p{
+    color: #ededed;
+    font-size: 20px;
+    width: 50%;
+    line-height: 1.5;
+}
+
+.description button{
+    border: 1px solid #7A63A1;
+    background: #B68385;
+    color: white;
+}
+
+.description button:hover{
+    background: #604E86;
+    
+}
+
+/* About / O meni */
+.about{
+    position: relative;
+    margin: 4em 0;
+    padding: 1em;
+}
+
+.about-row{
+    margin-top: 5%;
+}
+
+.about h1{
+    color: white;
+}
+
+.about img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    max-width: 100%;
+}
+
+.about .opis{
+    padding: 2em;
+    border-left: 4px solid #6F5558;
+    color: white;
+}
+
+.about .opis h3{
+    line-height: 2;
+    color: #ededed;
+}
+
+
+
+
+
+
+
+
