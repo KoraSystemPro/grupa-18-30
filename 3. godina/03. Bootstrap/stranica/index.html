@@ -21,10 +21,10 @@
                         <a class="nav-link" data-value="oMeni" href="#about">O meni</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-value="portfolio" href="#">Portfolio</a>
+                        <a class="nav-link" data-value="gallery" href="#gallery">Galerija</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-value="blog" href="#">Linkovi</a>
+                        <a class="nav-link" data-value="links" href="#links">Linkovi</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-value="kontakt" href="#">Kontakt</a>
@@ -34,7 +34,7 @@
             </div>
         </nav>
         <!-- Zaglavlje -->
-        <header class="page-header header container-fluid">
+        <header class="page-header">
             <div class="overlay"></div>
             <div class="container">
                 <div class="description">
@@ -52,10 +52,10 @@
         <!-- About seckcija / O meni -->
         <div class="about" id="about">
             <div class="container">
-                <h1>O meni</h1>
+                <h1 class="text-center">O meni</h1>
                 <div class="row about-row">
                     <div class="col-lg-4">
-                        <img id="portret" src="img/portret.jpeg">
+                        <img src="img/portret.jpeg">
                     </div>
                     <div class="col-lg-8 opis">
                         <h3>Luka Korica</h3>
@@ -67,6 +67,84 @@
             </div>
         </div>
         
+        <div class="gallery" id="gallery">
+            <h1 class="text-center">Galerija</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <img src="img/background/slika1.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="img/background/slika2.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="img/background/slika3.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="img/background/slika4.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="img/background/slika5.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="img/background/slika13.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="img/background/slika7.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="img/background/slika10.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="img/background/slika8.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="img/background/slika9.jpg" class="img-fluid">
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <img src="img/background/slika11.jpg" class="img-fluid">
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="img/background/slika12.jpg" class="img-fluid">
+                    </div>
+                </div>
+        
+            </div>
+            
+        </div>
+        
+        <!-- Linkovi -->
+        <div class="links" id="links">
+            <div class="container">
+                <h1 class="text-center">Linkovi</h1>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <img class="car-img-top" src="img/icons/syspro.png" alt="SystemPro">
+                            <div class="card-body"> 
+                                <h5 class="card-title">System Pro</h5>
+                                <p class="card-text">Link ka skoli programiranja SystemPro u Beogradu.</p>
+                                <a href="https://www.systempro.rs" class="btn btn-primary">Procitaj više</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <img class="car-img-top" src="img/icons/github.svg" alt="SystemPro">
+                            <div class="card-body"> 
+                                <h5 class="card-title">GitHub</h5>
+                                <p class="card-text">Link ka GitHub-u gde se nalaze sve stvari rađene na časovima.</p>
+                                <a href="https://www.github.com/lkora" class="btn btn-primary">Procitaj više</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
