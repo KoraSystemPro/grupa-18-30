@@ -194,7 +194,52 @@ body{
     font-size: 16pt;
 }
 
+.gallery img{
+    height: 15em;
+    width: 100%;
+    margin: 1em;
+}
+
+.gallery h1{
+    color: white;
+    margin: 1em;
+}
 
 
+/* Linkovi */
+.links{
+    position: relative;
+}
+
+.links h1{
+    color: white;
+    margin: 1em; 
+}
+
+.links .card{
+    box-shadow: 0 0 20px black;
+}
+
+.links .card img{
+    margin: auto;
+    height: 12em;
+}
+
+.links .card{
+    padding: 2em;
+    background: #30435D;
+    color: white;
+    
+}
+
+
+.link .card-body{
+    padding: 2em;
+}
+
+.links .card-body a{
+    background: #B68385;
+    color: black;
+}
 
 
