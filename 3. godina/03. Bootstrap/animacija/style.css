@@ -1,0 +1,90 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Papyrus", fantasy;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    min-height: 80vh;
+    width: 35em;
+    border-radius: 30px;
+    padding-top: 0em 5em;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+    
+}
+
+.circle{
+    width: 15em;
+    height: 15em;
+    background: linear-gradient(to right,
+        rgba(102, 51, 0, 0.75),
+        rgba(43, 199, 172, 0.75)
+    );
+    position: absolute;
+    
+    z-index: 1;
+    border-radius: 50%;
+}
+
+.pickaxe{
+    min-height: 35em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pickaxe img{
+    width: 20em;
+    z-index: 2;
+}
+
+.info h1{
+    font-size: 3em;
+}
+
+.info h3{
+    font-size: 1.3em;
+    padding: 2em 0em;
+    color: black;
+    font-weight: lighter;
+}
+
+.prices{
+    display: flex;
+    justify-content: space-between;
+}
+
+.prices button{
+    padding: 0.5em 2em;
+    background: none;
+    border: none;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    color: rgba(43, 199, 172, 0.75);
+}
+
+
+
+
+
+
+
+
+
