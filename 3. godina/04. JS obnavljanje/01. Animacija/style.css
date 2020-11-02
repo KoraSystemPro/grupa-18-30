@@ -10,6 +10,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    background: rgba(102, 51, 0, 0.5);
+    
 }
 
 .container{
@@ -17,24 +19,26 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    background: salmon;
 }
 
 .card{
-    min-height: 80vh;
+    transform-style: preserve-3d;
+    
+    background: #32664D;
+    min-height: 60vh;
     width: 35em;
     border-radius: 30px;
-    padding-top: 0em 5em;
+    padding: 0em 5em;
     box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+    
     
 }
 
 .circle{
     width: 15em;
     height: 15em;
-    background: linear-gradient(to right,
-        rgba(102, 51, 0, 0.75),
-        rgba(43, 199, 172, 0.75)
-    );
+    background: #D6D7C9;
     position: absolute;
     
     z-index: 1;
@@ -53,6 +57,10 @@ body{
     z-index: 2;
 }
 
+.info{
+    color: #D6D7C9;
+}
+
 .info h1{
     font-size: 3em;
 }
@@ -60,7 +68,6 @@ body{
 .info h3{
     font-size: 1.3em;
     padding: 2em 0em;
-    color: black;
     font-weight: lighter;
 }
 
@@ -77,9 +84,29 @@ body{
     border-radius: 30px;
     font-weight: bold;
     cursor: pointer;
-    color: rgba(43, 199, 172, 0.75);
+    color: #D6D7C9;
 }
 
+button.active{
+    background: #D6D7C9;
+    color: #32664D;
+}
+
+.purchase{
+    margin: 3em 0;
+    
+}
+
+.purchase button{
+    width: 100%;
+    padding: 1em 0;
+    background: #D6D7C9;
+    border: none;
+    color: #32664D;
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: bolder;
+}
 
 
 
