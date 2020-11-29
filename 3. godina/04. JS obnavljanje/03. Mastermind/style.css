@@ -1,1 +1,47 @@
-    
+* {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18pt;
+}
+
+body {
+    padding: 10px;
+}
+
+button {
+    display: block;
+    margin: 15px 0;
+    padding: 5px;
+}
+
+.red_dugmadi_k{
+    width: 220px;
+    height: 55px;
+
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.red_dugmadi_p{
+    width: 220px;
+    height: 55px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dgm_p, .dgm_k{
+    width: 50px;
+    height: 50px;
+    background: #777777;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.dgm_p:hover{
+    filter: brightness(130%);
+}
