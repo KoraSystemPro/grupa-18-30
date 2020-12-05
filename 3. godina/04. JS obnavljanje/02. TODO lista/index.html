@@ -3,9 +3,7 @@
     <head>
         <title>TODO</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="./style.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        
+        <link rel="stylesheet" type="text/css" href="./style.css">     
     </head>
 
     <body>
@@ -14,13 +12,13 @@
         </header>
         
         <form>
-            <input type="text" class="todo-input">
-            <button class="todo-button" type="submit">
+            <input type="text" id="input" class="todo-input">
+            <button class="todo-button" type="submit" onclick="napraviNoviElement()">
                 Add
             </button>
         </form>
         <div class="todo-container">
-            <ul class="todo-list"></ul>
+            <ul class="todo-list" id="myList"></ul>
         </div>
     
         <script src="./script.js"></script>

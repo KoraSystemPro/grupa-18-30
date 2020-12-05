@@ -5,6 +5,8 @@ let beli = 0;   // Dobar broj                   zuti
 let niz_crnih = [0, 0, 0, 0];
 let prebrojavanje = [0, 0, 0, 0, 0, 0];
                 //   1  2  3  4  5  6
+let br_pokusaja = 0;
+let max_br_pokusaja = 8;
 
 let dugme_1 = document.getElementById("dgm_p1");
 let dugme_2 = document.getElementById("dgm_p2");
@@ -54,6 +56,7 @@ function promena(tip, k){
 
 
 function oceni(kombinacija, pokusaj){
+    br_pokusaja++;
     crni = 0;
     beli = 0;
     prebrojavanje = [0, 0, 0, 0, 0, 0];
@@ -78,18 +81,40 @@ function oceni(kombinacija, pokusaj){
         }
     }
 
-    console.log(kombinacija, pokusaj);
+    // Dobitan pogodak, ispisujemo resenje
+    if(crni == 4){
+        document.getElementById("sakriven_red").style.display = "flex";
+    }
+
+    // Iskorisceni su svi pokusaji
+    if((max_br_pokusaja - br_pokusaja) <= 0){
+        document.getElementById("oceni").style.display = "none";
+    }
+    console.log("Kombinacija:\t" + kombinacija + "\nPokusaj:\t\t" + pokusaj + "\nBr pokusaja:\t" + br_pokusaja + "\nPreostali broj pokusaja:\t" + (max_br_pokusaja-br_pokusaja));
     ispisi();
 }
 
 function novaKombinacija(){
+    
+    document.getElementById("oceni").style.display = "block";
+    // Sakrivamo kombinaciju pre neg sto napravimo novu 
+    document.getElementById("sakriven_red").style.display = "none";
+    // Resetujemo pokusaj na 0 i postavljamo sve na sivo
+    for(i = 0; i < 4; i++){
+        pokusaj[i] = 0;
+        document.getElementById("dgm_p" + (i + 1)).style.backgroundColor = "#777777"; 
+    }
+    // Resetujemo broj pokusaja
+    br_pokusaja = 0;
+
+    // Generisanje nove kombinacije
     // console.log(Math.round(Math.random()*10000) % 6);
     for(i = 0; i < 4; i++){
         kombinacija[i] = Math.round(Math.random() * 10000) % 6 + 1;
         promena("k", i+1);
     }
         
-    console.log(kombinacija, pokusaj);
+    console.log("Nova kombinacija: " + kombinacija + "\n-------------------");
 
 }
 
@@ -99,6 +124,8 @@ function ispisi(){
     for(i = 0; i < 4; i++){
         document.getElementById("kombinacija").innerHTML += kombinacija[i];
     }
+    // Preostali broj pokusaja
+    document.getElementById("prostali_pokusaji").innerHTML = "Preostali broj pokusaja: " + (max_br_pokusaja - br_pokusaja);
     // Crni
     document.getElementById("crni").innerHTML = "Crni: " + crni;
     // Beli
