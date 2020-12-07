@@ -78,8 +78,9 @@ ul li:hover{
     padding: 12px 0;
 }
 
-ul li.gotovo{
+ul li.checked{
     background: gray;
     color: #fff;
     text-decoration: line-through;
 }
+

@@ -1,11 +1,12 @@
-var ul = document.getElementById("todoLista");
-var close = document.getElementsByClassName("close");
-
-ul.addEventListener("click", function(evt){
-    if(evt.target.tagName === "li"){
-        evt.target.classList.toggle = "gotovo";
-    }
-}, false);
+//  Dohvatamo listu i stavljamo EventListener na sve clanove ul-a
+var list = document.getElementById('todoLista');
+list.addEventListener('click', function(evt) {
+  // Funkcija vraca target element i menja ime klase pritisnutog elementa liste
+  // Greska je bila u narednoj liniji, tagName vraca velika slova zato moram da poredim sa 'LI' ne sa 'li' 
+  if (evt.target.tagName === 'LI') {
+    evt.target.classList.toggle('checked');
+  }
+});
 
 function sakrijiElement(){
     let element = this.parentElement;
@@ -20,7 +21,7 @@ function napraviNoviElement(){
     if(ulaznaVrednost == ""){
         alert("Morate da napišete nešto!");
     } else {
-        ul.appendChild(li);
+        list.appendChild(li);
     }
     // Brisemo sadrzaj input-a kada ga dodamo na listu
     document.getElementById("inputSadrzaj").value = "";
