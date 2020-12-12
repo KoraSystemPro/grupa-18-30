@@ -3,6 +3,7 @@ var list = document.getElementById('todoLista');
 list.addEventListener('click', function(evt) {
   // Funkcija vraca target element i menja ime klase pritisnutog elementa liste
   // Greska je bila u narednoj liniji, tagName vraca velika slova zato moram da poredim sa 'LI' ne sa 'li' 
+  //   console.log(evt.target.tagName);
   if (evt.target.tagName === 'LI') {
     evt.target.classList.toggle('checked');
   }
