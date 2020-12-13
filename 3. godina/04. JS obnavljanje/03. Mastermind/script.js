@@ -124,6 +124,8 @@ function novaKombinacija(){
 }
 
 function ispisi(){
+    // Ispisuje sva polja koja cemo koristiti za pamcenje pokusaja
+    nacrtajPolja();
     // Kombinacija
     document.getElementById("kombinacija").innerHTML = "Kombinacija: ";
     for(i = 0; i < 4; i++){
@@ -135,6 +137,38 @@ function ispisi(){
     document.getElementById("crni").innerHTML = "Crni: " + crni;
     // Beli
     document.getElementById("beli").innerHTML = "Beli: " + beli;
+}
+
+function nacrtajPolja(){
+    let div_tabela = document.getElementById("memorija");
+
+    for(let i = 0; i < max_br_pokusaja; i++){
+        let div_red = document.createElement("div");
+        div_red.classList.add("red", "flex-red");
+
+        let div_pokusaj = document.createElement("div");
+        div_pokusaj.classList.add("pokusaj", "flex-red");
+
+        let div_resenje = document.createElement("div");
+        div_resenje.classList.add("resenje", "flex-red");
+
+        for(let j = 0; j < 4; j++){
+            // Kreira polja od pokusaja i dodaje ih na div_pokusaj
+            let div_pokusaj_polje = document.createElement("div");
+            div_pokusaj_polje.classList.add("pokusaj-polje");
+            div_pokusaj.appendChild(div_pokusaj_polje);
+
+            // Kreira polja od resenja i dodaje ih na div_resenje
+            let div_resenje_polje = document.createElement("div");
+            div_resenje_polje.classList.add("resenje-polje");
+            div_resenje.appendChild(div_resenje_polje);
+
+        }
+        div_red.appendChild(div_pokusaj);
+        div_red.appendChild(div_resenje);
+
+        div_tabela.appendChild(div_red);
+    }
 }
 
 // Pozivam funkciju za generisanje kombinacije
