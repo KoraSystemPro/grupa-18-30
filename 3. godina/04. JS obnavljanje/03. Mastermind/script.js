@@ -7,6 +7,9 @@ let prebrojavanje = [0, 0, 0, 0, 0, 0];
                 //   1  2  3  4  5  6
 let br_pokusaja = 0;
 let max_br_pokusaja = 6;
+// Ispisuje sva polja koja cemo koristiti za pamcenje pokusaja
+nacrtajPolja();
+ispisi();
 
 let dugme_1 = document.getElementById("dgm_p1");
 let dugme_2 = document.getElementById("dgm_p2");
@@ -96,6 +99,7 @@ function oceni(kombinacija, pokusaj){
     }
     console.log("Kombinacija:\t" + kombinacija + "\nPokusaj:\t\t" + pokusaj + "\nBr pokusaja:\t" + br_pokusaja + "\nPreostali broj pokusaja:\t" + (max_br_pokusaja-br_pokusaja));
     ispisi();
+    upisiUTabelu(pokusaj, crni, beli, br_pokusaja-1);
 }
 
 function novaKombinacija(){
@@ -124,8 +128,6 @@ function novaKombinacija(){
 }
 
 function ispisi(){
-    // Ispisuje sva polja koja cemo koristiti za pamcenje pokusaja
-    nacrtajPolja();
     // Kombinacija
     document.getElementById("kombinacija").innerHTML = "Kombinacija: ";
     for(i = 0; i < 4; i++){
@@ -137,6 +139,36 @@ function ispisi(){
     document.getElementById("crni").innerHTML = "Crni: " + crni;
     // Beli
     document.getElementById("beli").innerHTML = "Beli: " + beli;
+}
+
+function upisiUTabelu(pokusaj, crni, beli, red){
+    // Popunjava pokusaje
+    for(let kolona = 0; kolona < 4; kolona++){
+        // Selektujemo odgovarajuce polje u koloni i tako redom, red po red
+        let polje = document.getElementById("pokusaj-polje-" + red + "-" + kolona);
+        // Menjamo boju polje po polje
+        switch(pokusaj[kolona]){
+            case 1: polje.style.backgroundColor = "#ff7777"; break;
+            case 2: polje.style.backgroundColor = "#ffff77"; break;
+            case 3: polje.style.backgroundColor = "#7777ff"; break;
+            case 4: polje.style.backgroundColor = "#ff77ff"; break;
+            case 5: polje.style.backgroundColor = "#77ff77"; break;
+            case 6: polje.style.backgroundColor = "#ffaa55"; break;
+            default: break;
+        }
+    }
+    // Popunjava resenja, prvo crne pa bele pogotke
+    // Promanljiva i nam sluzi samo za pracenje indeksa celija u vrsti
+    let i = 0;
+    for(let br_crnih = 0; br_crnih < crni; i++, br_crnih++){
+        let polje = document.getElementById("resenje-polje-" + red + "-" + i);
+        polje.style.backgroundColor = "red";
+    }
+    for(let br_belih = 0; br_belih < beli; i++, br_belih++){
+        let polje = document.getElementById("resenje-polje-" + red + "-" + i);
+        polje.style.backgroundColor = "yellow";
+    }
+    
 }
 
 function nacrtajPolja(){
@@ -156,11 +188,13 @@ function nacrtajPolja(){
             // Kreira polja od pokusaja i dodaje ih na div_pokusaj
             let div_pokusaj_polje = document.createElement("div");
             div_pokusaj_polje.classList.add("pokusaj-polje");
+            div_pokusaj_polje.id = "pokusaj-polje-" + i + "-" + j;
             div_pokusaj.appendChild(div_pokusaj_polje);
 
             // Kreira polja od resenja i dodaje ih na div_resenje
             let div_resenje_polje = document.createElement("div");
             div_resenje_polje.classList.add("resenje-polje");
+            div_resenje_polje.id = "resenje-polje-" + i + "-" + j;
             div_resenje.appendChild(div_resenje_polje);
 
         }
@@ -170,6 +204,7 @@ function nacrtajPolja(){
         div_tabela.appendChild(div_red);
     }
 }
+
 
 // Pozivam funkciju za generisanje kombinacije
 document.getElementById("nova-kombinacija").addEventListener("click", novaKombinacija);
