@@ -1,0 +1,81 @@
+/*
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	
+}
+*/
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	
+}
+/*
+th {
+	height: 50px;
+	
+	text-align: left; /* left - center - right 
+	vertical-align: bottom; /* top - center - bottom 
+	
+}
+
+*/
+
+td, th {
+	padding: 10px;
+	text-align: left;
+	
+	border-bottom: 1px solid #ccc
+}
+
+
+
+tr:nth-child(even){
+	background-color: #f2f2f2;
+}
+tr:hover {
+	background-color: lime;
+}
+
+
+	/*
+		solid
+		dahsed
+		dotted
+		double
+		groove
+		ridge
+		inset
+		outset
+		none
+		hidden
+	*/
+#p1 {
+	border-width: 5px;
+	border-style: groove;
+	border-color: Gray;
+		/* 
+			border-top-style
+			border-bottom-style
+			border-left-style
+			border-right-style
+		*/
+}
+#p2 {
+	border-width: 5px;
+	border-style: ridge;
+	border-color: red green blue yellow;
+	
+}
+#p3 {
+	border-width: 5px;
+	border-style: inset;
+	border-color: Gray;
+	border-radius: 100%;
+}
+#p4 {
+	border-width: 5px;
+	border-style: outset;
+	border-color: Gray;
+}

@@ -1,0 +1,127 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Papyrus", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    perspective: 1000px;
+}
+
+.container{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: lightblue; */
+}
+
+.card{
+    /* Automatski stavlja i pomera sve elemente */
+    transform-style: preserve-3d;
+    
+    min-height: 60rem;
+    width: 35rem;
+    border-radius: 30px;
+    padding: 0rem 5rem;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+    /* background-color: lightcoral; */
+}
+
+.circle{
+    width: 15rem;
+    height: 15rem;
+    background: linear-gradient(to right,
+        rgba(102, 51, 0, 0.75),
+        rgba(43, 199, 172, 0.75)
+    );
+    position: absolute;
+    
+    z-index: 1;
+    border-radius: 50%;
+}
+
+.pickaxe{
+    min-height: 35rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pickaxe img{
+    width: 18rem;
+    z-index: 2;
+    
+    transition: all 0.75s ease-out;
+
+}
+
+.info h1{
+    font-size: 3rem;
+
+    transition: all 0.75s ease-out;
+}
+
+.info h3{
+    font-size: 1.3rem;
+    padding: 2rem 0rem;
+    color: #585858;
+    font-weight: lighter;
+
+    transition: all 0.75s ease-out;
+
+}
+
+.prices{
+    display: flex;
+    justify-content: space-between;
+}
+
+.prices button{
+    padding: 0.5rem 2rem;
+    background: none;
+    border: none;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #585858;
+}
+
+button.active{
+    background: #585858;
+    color: white;
+}
+
+.purchase{
+    margin-top: 5rem;
+}
+
+.purchase button{
+    width: 100%;
+    padding: 1rem 0rem;
+    background:rgba(43, 199, 172, 0.75);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: bolder;
+
+    transition: all 0.75s ease-out;
+
+}
+
+
+
+
+
+
+
+
+

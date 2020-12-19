@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    background-image: linear-gradient(120deg, #e2c35d, salmon);
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+header{
+    font-size: 1.5em;
+}
+
+header, form{
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form input,
+form button{
+    padding: 0.5rem;
+    font-size: 2rem;
+    border: none;
+    background: white;
+}
+
+form button{
+    color: salmon;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+form button:hover{
+    background: salmon;
+    color: white;
+}
+
+
+.todo-container{
+    width: 60vw;
+    margin-left: 20%;
+    
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li{
+    cursor: pointer;
+    position: relative;
+    padding: 12px 1em;
+    background-color: #7FA8A5;
+    font-size: 18pt;
+    color: black;
+    
+}
+ul li:nth-child(odd){
+    background-color: #88B6A4;
+}
+
+ul li:hover{
+    background-color: #57D0C5;
+}
+
+
+
+.close{
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 0;
+}
+
+ul li.checked{
+    background: gray;
+    color: #fff;
+    text-decoration: line-through;
+}
+
