@@ -10,6 +10,22 @@ let max_br_pokusaja = 6;
 // Ispisuje sva polja koja cemo koristiti za pamcenje pokusaja
 nacrtajPolja();
 ispisi();
+let div_pokusaj_pamcenje_boja, div_resenje_pamcenje_boja;
+
+
+
+function izbrisiTabelu(){
+    for(let red = 0; red < max_br_pokusaja; red++){
+        for(let kolona = 0; kolona < 4; kolona++){
+            // Dohvatamo pokusaj i resenje za svaki pokusaj i svaku kolonu
+            let polje_pokusaj = document.getElementById("pokusaj-pamcenje-" + red + "-" + kolona);
+            let polje_resenje = document.getElementById("resenje-pamcenje-" + red + "-" + kolona);
+            // Vracamo im prvobitnu boju
+            polje_pokusaj.style.backgroundColor = "white";
+            polje_resenje.style.backgroundColor = "#777777";
+        }
+    }
+}
 
 let dugme_1 = document.getElementById("dgm_p1");
 let dugme_2 = document.getElementById("dgm_p2");
@@ -114,7 +130,9 @@ function novaKombinacija(){
         pokusaj[i] = 0;
         document.getElementById("dgm_p" + (i + 1)).style.backgroundColor = "#777777"; 
     }
-    
+    // Resetujemo tabelu na pocetnu fazu
+    izbrisiTabelu();
+
 
     // Generisanje nove kombinacije
     // console.log(Math.round(Math.random()*10000) % 6);
