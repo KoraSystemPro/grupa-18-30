@@ -10,16 +10,13 @@ let max_br_pokusaja = 6;
 // Ispisuje sva polja koja cemo koristiti za pamcenje pokusaja
 nacrtajPolja();
 ispisi();
-let div_pokusaj_pamcenje_boja, div_resenje_pamcenje_boja;
-
-
 
 function izbrisiTabelu(){
     for(let red = 0; red < max_br_pokusaja; red++){
         for(let kolona = 0; kolona < 4; kolona++){
             // Dohvatamo pokusaj i resenje za svaki pokusaj i svaku kolonu
-            let polje_pokusaj = document.getElementById("pokusaj-pamcenje-" + red + "-" + kolona);
-            let polje_resenje = document.getElementById("resenje-pamcenje-" + red + "-" + kolona);
+            let polje_pokusaj = document.getElementById("pokusaj-polje-" + red + "-" + kolona);
+            let polje_resenje = document.getElementById("resenje-polje-" + red + "-" + kolona);
             // Vracamo im prvobitnu boju
             polje_pokusaj.style.backgroundColor = "white";
             polje_resenje.style.backgroundColor = "#777777";

@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    font-size: 12pt;
+}
+#omotac{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(120deg, rgba(140, 58, 70, 0.5), rgba(22, 67, 170, 0.5));
+}
+
+#timer{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 5em;
+}
+
+#progress-bar{
+    width: 50%;
+    height: 10%;
+    background-color: #dddddd;
+    position: relative;
+}
+
+#progress{
+    background-color: green;
+    width: 10%;
+    height: 10%;
+    position: absolute;
+}
