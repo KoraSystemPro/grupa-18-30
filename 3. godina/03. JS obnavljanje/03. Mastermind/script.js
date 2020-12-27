@@ -10,6 +10,10 @@ let max_br_pokusaja = 6;
 // Ispisuje sva polja koja cemo koristiti za pamcenje pokusaja
 nacrtajPolja();
 ispisi();
+// Za progress bar
+const korak = document.getElementById("progress-korak");
+var korak_timer;
+
 
 function izbrisiTabelu(){
     for(let red = 0; red < max_br_pokusaja; red++){
@@ -66,8 +70,25 @@ function promena(tip, k){
             default: break;
         }
     }
-    
-    
+}
+
+
+function pokreniTajmer(){
+    let width = 0;
+    korak_timer = setInterval(sledeciKorak, 1000);
+    function sledeciKorak(){
+        if(width >= 100){
+            // Isteklo vreme
+            clearInterval(korak_timer);
+            document.getElementById("sakriven_red").style.display = "flex";
+            document.getElementById("oceni").style.display = "none";
+            document.getElementById("nova-kombinacija").style.display = "block";
+            alert("Isteklo vreme!");
+        } else {
+            width += 1;
+            korak.style.width = width + "%";
+        }
+    }
 }
 
 
@@ -102,13 +123,17 @@ function oceni(kombinacija, pokusaj){
         document.getElementById("sakriven_red").style.display = "flex";
         document.getElementById("nova-kombinacija").style.display = "block";
         document.getElementById("oceni").style.display = "none";
-
+        // Zaustavljamo progress bar
+        clearInterval(korak_timer);
     }
 
-    // Iskorisceni su svi pokusaji
+    // Iskorisceni su svi pokusaji, ispisujemo resenje
     if((max_br_pokusaja - br_pokusaja) <= 0){
+        document.getElementById("sakriven_red").style.display = "flex";
         document.getElementById("oceni").style.display = "none";
         document.getElementById("nova-kombinacija").style.display = "block";
+        // Zaustavljamo progress bar
+        clearInterval(korak_timer);
     }
     console.log("Kombinacija:\t" + kombinacija + "\nPokusaj:\t\t" + pokusaj + "\nBr pokusaja:\t" + br_pokusaja + "\nPreostali broj pokusaja:\t" + (max_br_pokusaja-br_pokusaja));
     ispisi();
@@ -118,6 +143,8 @@ function oceni(kombinacija, pokusaj){
 function novaKombinacija(){
     // Resetujemo broj pokusaja
     br_pokusaja = 0;
+    crni = 0;
+    beli = 0;
     document.getElementById("nova-kombinacija").style.display = "none";
     document.getElementById("oceni").style.display = "block";
     // Sakrivamo kombinaciju pre neg sto napravimo novu 
@@ -129,6 +156,8 @@ function novaKombinacija(){
     }
     // Resetujemo tabelu na pocetnu fazu
     izbrisiTabelu();
+    // Postavljamo progress bar na 0
+    korak.style.width = "0%";
 
 
     // Generisanje nove kombinacije
@@ -137,6 +166,10 @@ function novaKombinacija(){
         kombinacija[i] = Math.round(Math.random() * 10000) % 6 + 1;
         promena("k", i+1);
     }
+    
+    // Pokrecemo tajmer za igru
+    pokreniTajmer();
+
         
     console.log("Nova kombinacija: " + kombinacija + "\n-------------------");
     ispisi();

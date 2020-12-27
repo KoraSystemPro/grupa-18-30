@@ -24,17 +24,3 @@ body{
     font-family: 'Roboto Mono', monospace;
     font-size: 5em;
 }
-
-#progress-bar{
-    width: 50%;
-    height: 10%;
-    background-color: #dddddd;
-    position: relative;
-}
-
-#progress{
-    background-color: green;
-    width: 10%;
-    height: 10%;
-    position: absolute;
-}

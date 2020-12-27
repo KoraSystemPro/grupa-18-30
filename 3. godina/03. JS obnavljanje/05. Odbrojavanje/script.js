@@ -27,8 +27,3 @@ function obnoviVreme(){
 
 // Stavljamo metodu za pozivanje funkcije na promenljivu refresh_timer
 var refresh_timer = setInterval(obnoviVreme, 1000);
-
-
-function pokreniTajmer(){
-    const zelena
-}
