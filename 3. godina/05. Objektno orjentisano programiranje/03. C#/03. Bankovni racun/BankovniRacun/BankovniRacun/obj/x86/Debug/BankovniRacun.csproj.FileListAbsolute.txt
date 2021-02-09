@@ -1,0 +1,6 @@
+/home/kora/Documents/SystemPro/GitHub/grupa-18-30/3. godina/05. Objektno orjentisano programiranje/03. C#/03. Bankovni racun/BankovniRacun/BankovniRacun/bin/Debug/BankovniRacun.exe
+/home/kora/Documents/SystemPro/GitHub/grupa-18-30/3. godina/05. Objektno orjentisano programiranje/03. C#/03. Bankovni racun/BankovniRacun/BankovniRacun/bin/Debug/BankovniRacun.pdb
+/home/kora/Documents/SystemPro/GitHub/grupa-18-30/3. godina/05. Objektno orjentisano programiranje/03. C#/03. Bankovni racun/BankovniRacun/BankovniRacun/obj/x86/Debug/BankovniRacun.csprojAssemblyReference.cache
+/home/kora/Documents/SystemPro/GitHub/grupa-18-30/3. godina/05. Objektno orjentisano programiranje/03. C#/03. Bankovni racun/BankovniRacun/BankovniRacun/obj/x86/Debug/BankovniRacun.csproj.CoreCompileInputs.cache
+/home/kora/Documents/SystemPro/GitHub/grupa-18-30/3. godina/05. Objektno orjentisano programiranje/03. C#/03. Bankovni racun/BankovniRacun/BankovniRacun/obj/x86/Debug/BankovniRacun.exe
+/home/kora/Documents/SystemPro/GitHub/grupa-18-30/3. godina/05. Objektno orjentisano programiranje/03. C#/03. Bankovni racun/BankovniRacun/BankovniRacun/obj/x86/Debug/BankovniRacun.pdb

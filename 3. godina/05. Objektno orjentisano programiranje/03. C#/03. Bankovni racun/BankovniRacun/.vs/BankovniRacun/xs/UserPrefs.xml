@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{7232FE31-289B-4ADE-B0F5-3D708E4010A2}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BankovniRacun/EmptyClass.cs">
+    <Files>
+      <File FileName="BankovniRacun/Program.cs" Line="47" Column="18" />
+      <File FileName="BankovniRacun/EmptyClass.cs" Line="5" Column="8" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="BankovniRacun" expanded="True">
+            <Node name="BankovniRacun" expanded="True">
+              <Node name="EmptyClass.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.ItemProperties.BankovniRacun PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
