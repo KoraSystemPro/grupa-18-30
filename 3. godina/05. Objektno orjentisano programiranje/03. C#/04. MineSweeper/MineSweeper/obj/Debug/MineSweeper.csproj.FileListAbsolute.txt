@@ -1,0 +1,6 @@
+E:\18-30\MineSweeper\MineSweeper\bin\Debug\MineSweeper.exe.config
+E:\18-30\MineSweeper\MineSweeper\bin\Debug\MineSweeper.exe
+E:\18-30\MineSweeper\MineSweeper\bin\Debug\MineSweeper.pdb
+E:\18-30\MineSweeper\MineSweeper\obj\Debug\MineSweeper.csprojResolveAssemblyReference.cache
+E:\18-30\MineSweeper\MineSweeper\obj\Debug\MineSweeper.exe
+E:\18-30\MineSweeper\MineSweeper\obj\Debug\MineSweeper.pdb
