@@ -1,7 +1,7 @@
 var sirina = 600;
 var visina = 600;
-var redovi = 10;
-var kolone = 10;
+var redovi = 60;
+var kolone = 60;
 var velicinaCelije = sirina / kolone;
 
 function pripremiCanvas() {
@@ -49,15 +49,67 @@ function napravi2DNiz(brRedova, brKolona) {
     }
     return matrica;
 }
-function main() {
-    let canv, kontekst = pripremiCanvas();
-    let igra = napravi2DNiz(redovi, kolone);
-    igra = napraviNasumicnuIgru(igra);
-    console.log(igra);
+
+function prebrojKomsije(matrica, x, y) {
+    let suma = 0;
+    // Bez obmotavanja
+    // for (let i = -1; i < 2 && x + i > -1 && x + i < redovi; i++) {
+    //     for (let j = -1; j < 2 && y + j > -1 && y + j < kolone; j++) {
+    //         suma += matrica[x + i][y + i];
+    //     }
+    // }
+    // Obmotavanje
+    for (let i = -1; i < 2; i++) {
+        for (let j = -1; j < 2; j++) {
+            let row = (x + i + redovi) % redovi;
+            let col = (y + j + kolone) % kolone;
+            suma += matrica[row][col];
+        }
+    }
+    suma -= matrica[x][y];
+    return suma;
+}
+
+function novaGeneracija(matrica) {
+    let sledecaGen = napravi2DNiz(redovi, kolone);
+
+    for (let i = 0; i < redovi; i++) {
+        for (let j = 0; j < kolone; j++) {
+
+            let brKomsija = prebrojKomsije(matrica, i, j);
+            let trenutnaCelija = matrica[i][j];
+            // trenutna = 0, brKomsija = 3
+            // 0 -> 1 ozivi
+            if (trenutnaCelija == 0 && brKomsija == 3) {
+                sledecaGen[i][j] = 1;
+            }
+            // trenutna = 1, brKomsija != {2,3}
+            // 1 -> 0 umire, prepoulacija, nedostatak populacije 
+            else if (trenutnaCelija == 1 && (brKomsija < 2 || brKomsija > 3)) {
+                sledecaGen[i][j] = 0;
+            }
+            // Preostali slucaj, nista se ne menja
+            else {
+                sledecaGen[i][j] = trenutnaCelija;
+            }
+        }
+    }
+    return sledecaGen;
+}
+
+function pokreniIgru() {
     crtaj(kontekst, igra);
 
+    igra = novaGeneracija(igra);
+}
 
+var kontekst, canv, igra;
+function main() {
+    canv, kontekst = pripremiCanvas();
+    igra = napravi2DNiz(redovi, kolone);
+    igra = napraviNasumicnuIgru(igra);
 
+    setInterval(pokreniIgru, 50);
 }
 
 document.addEventListener("DOMContentLoaded", main);
