@@ -1,8 +1,19 @@
-var sirina = 600;
-var visina = 600;
+var sirina_prozora = window.innerWidth;
+var visina_prozora = window.innerHeight;
+var sirina, visina;
+var rezolucija;
+if(sirina_prozora < visina_prozora)
+    rezolucija = sirina_prozora;
+else
+    rezolucija = visina_prozora;
+
+sirina = rezolucija;
+visina = rezolucija;
 var redovi = 60;
 var kolone = 60;
 var velicinaCelije = sirina / kolone;
+const SPEED = 100;
+
 
 function pripremiCanvas() {
     let canv = document.createElement("canvas");
@@ -105,11 +116,13 @@ function pokreniIgru() {
 
 var kontekst, canv, igra;
 function main() {
+    nacrtajScenu();
+    
     canv, kontekst = pripremiCanvas();
     igra = napravi2DNiz(redovi, kolone);
     igra = napraviNasumicnuIgru(igra);
-
-    setInterval(pokreniIgru, 50);
+    
+    setInterval(pokreniIgru, SPEED);
 }
 
 document.addEventListener("DOMContentLoaded", main);
