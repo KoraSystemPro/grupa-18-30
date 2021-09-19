@@ -9,14 +9,15 @@ else
 
 sirina = rezolucija;
 visina = rezolucija;
-var redovi = 60;
-var kolone = 60;
+var redovi = 20;
+var kolone = 20;
 var velicinaCelije = sirina / kolone;
 const SPEED = 100;
 
 
 function pripremiCanvas() {
     let canv = document.createElement("canvas");
+    canv.id = "slika";
     canv.width = sirina;
     canv.height = visina;
     document.body.appendChild(canv);
@@ -110,8 +111,9 @@ function novaGeneracija(matrica) {
 
 function pokreniIgru() {
     crtaj(kontekst, igra);
-
     igra = novaGeneracija(igra);
+
+    azurirajMaterijalPrstena(document.getElementById("slika"));
 }
 
 var kontekst, canv, igra;
