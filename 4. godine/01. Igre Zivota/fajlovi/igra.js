@@ -119,10 +119,10 @@ function pokreniIgru() {
 var kontekst, canv, igra;
 function main() {
     nacrtajScenu();
-    
     canv, kontekst = pripremiCanvas();
     igra = napravi2DNiz(redovi, kolone);
     igra = napraviNasumicnuIgru(igra);
+    generisiSkyBox(500, 2000, 2000);
     
     setInterval(pokreniIgru, SPEED);
 }
