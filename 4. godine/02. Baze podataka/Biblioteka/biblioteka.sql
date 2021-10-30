@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 30, 2021 at 06:41 PM
+-- Generation Time: Oct 30, 2021 at 07:03 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -26,6 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `Autori`
 --
+-- Creation: Oct 17, 2021 at 05:11 PM
+--
 
 CREATE TABLE `Autori` (
   `ID` int(11) NOT NULL,
@@ -34,6 +36,10 @@ CREATE TABLE `Autori` (
   `GodinaSmrti` date DEFAULT NULL COMMENT 'Godina smrti',
   `Opis` text DEFAULT NULL COMMENT 'Mala biografija autora'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONSHIPS FOR TABLE `Autori`:
+--
 
 --
 -- Dumping data for table `Autori`
@@ -57,12 +63,18 @@ INSERT INTO `Autori` (`ID`, `Ime`, `GodinaRodjenja`, `GodinaSmrti`, `Opis`) VALU
 --
 -- Table structure for table `Clanarine`
 --
+-- Creation: Oct 24, 2021 at 05:23 PM
+--
 
 CREATE TABLE `Clanarine` (
   `ID` tinyint(11) NOT NULL,
   `Opis` varchar(200) DEFAULT NULL COMMENT 'Opis tipa clanarine',
   `Cena` float DEFAULT NULL COMMENT 'Ukupna godisnja cena clanarine'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONSHIPS FOR TABLE `Clanarine`:
+--
 
 --
 -- Dumping data for table `Clanarine`
@@ -80,6 +92,8 @@ INSERT INTO `Clanarine` (`ID`, `Opis`, `Cena`) VALUES
 --
 -- Table structure for table `Clanovi`
 --
+-- Creation: Oct 24, 2021 at 05:37 PM
+--
 
 CREATE TABLE `Clanovi` (
   `ID` int(11) NOT NULL COMMENT 'ID clana',
@@ -89,6 +103,14 @@ CREATE TABLE `Clanovi` (
   `DatumPrijave` date DEFAULT NULL COMMENT 'Datum izdavanja kartice u biblioteci',
   `Status` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'Trenutni status clana\r\n0 - neaktivan\r\n1 - aktivan'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONSHIPS FOR TABLE `Clanovi`:
+--   `Status`
+--       `StatusClana` -> `ID`
+--   `TipClanarine`
+--       `Clanarine` -> `ID`
+--
 
 --
 -- Dumping data for table `Clanovi`
@@ -112,6 +134,8 @@ INSERT INTO `Clanovi` (`ID`, `Ime`, `Prezime`, `TipClanarine`, `DatumPrijave`, `
 --
 -- Table structure for table `EvidencijaIzdavanja`
 --
+-- Creation: Oct 24, 2021 at 05:53 PM
+--
 
 CREATE TABLE `EvidencijaIzdavanja` (
   `ID` int(11) NOT NULL,
@@ -123,10 +147,16 @@ CREATE TABLE `EvidencijaIzdavanja` (
   `StatusIzdavanja` tinyint(4) DEFAULT NULL COMMENT 'Trenutni status izdavanja knjige'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- RELATIONSHIPS FOR TABLE `EvidencijaIzdavanja`:
+--
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `Knjige`
+--
+-- Creation: Oct 17, 2021 at 05:54 PM
 --
 
 CREATE TABLE `Knjige` (
@@ -136,6 +166,14 @@ CREATE TABLE `Knjige` (
   `AutorID` int(11) DEFAULT NULL COMMENT 'Ime Autora',
   `BrojNaStanju` int(11) DEFAULT 0 COMMENT 'Trenutno brojno stanje'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONSHIPS FOR TABLE `Knjige`:
+--   `AutorID`
+--       `Autori` -> `ID`
+--   `Zanr`
+--       `Zanrovi` -> `ZanrID`
+--
 
 --
 -- Dumping data for table `Knjige`
@@ -163,11 +201,17 @@ INSERT INTO `Knjige` (`ID`, `Ime`, `Zanr`, `AutorID`, `BrojNaStanju`) VALUES
 --
 -- Table structure for table `StatusClana`
 --
+-- Creation: Oct 24, 2021 at 05:29 PM
+--
 
 CREATE TABLE `StatusClana` (
   `ID` tinyint(4) NOT NULL,
   `Opis` varchar(200) DEFAULT NULL COMMENT 'Trenutno stanje clana'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONSHIPS FOR TABLE `StatusClana`:
+--
 
 --
 -- Dumping data for table `StatusClana`
@@ -183,12 +227,18 @@ INSERT INTO `StatusClana` (`ID`, `Opis`) VALUES
 --
 -- Table structure for table `Zanrovi`
 --
+-- Creation: Oct 10, 2021 at 05:40 PM
+--
 
 CREATE TABLE `Zanrovi` (
   `ZanrID` int(11) NOT NULL,
   `ImeZanra` varchar(255) DEFAULT NULL,
   `OpisZanra` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONSHIPS FOR TABLE `Zanrovi`:
+--
 
 --
 -- Dumping data for table `Zanrovi`
