@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 30, 2021 at 07:03 PM
+-- Generation Time: Oct 30, 2021 at 07:07 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -134,14 +134,14 @@ INSERT INTO `Clanovi` (`ID`, `Ime`, `Prezime`, `TipClanarine`, `DatumPrijave`, `
 --
 -- Table structure for table `EvidencijaIzdavanja`
 --
--- Creation: Oct 24, 2021 at 05:53 PM
+-- Creation: Oct 30, 2021 at 05:06 PM
 --
 
 CREATE TABLE `EvidencijaIzdavanja` (
   `ID` int(11) NOT NULL,
   `ClanID` int(11) DEFAULT NULL COMMENT 'Član kome se izdaje knjiga',
   `KnjigaID` int(11) DEFAULT NULL COMMENT 'Knjiga koja se izdaje članu',
-  `DatumIzdavanja` date DEFAULT current_timestamp() COMMENT 'Trenutni datum izdavanja',
+  `DatumIzdavanja` date DEFAULT NULL COMMENT 'Trenutni datum izdavanja',
   `DatumOcVracanja` date DEFAULT NULL COMMENT 'Datum očekivanog vraćanja knjige',
   `DatumVracanja` date DEFAULT NULL COMMENT 'Konačan datum vraćanja knjige',
   `StatusIzdavanja` tinyint(4) DEFAULT NULL COMMENT 'Trenutni status izdavanja knjige'
