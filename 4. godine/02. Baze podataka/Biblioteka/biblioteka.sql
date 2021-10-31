@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 30, 2021 at 07:07 PM
+-- Generation Time: Oct 31, 2021 at 06:20 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -134,7 +134,7 @@ INSERT INTO `Clanovi` (`ID`, `Ime`, `Prezime`, `TipClanarine`, `DatumPrijave`, `
 --
 -- Table structure for table `EvidencijaIzdavanja`
 --
--- Creation: Oct 30, 2021 at 05:06 PM
+-- Creation: Oct 30, 2021 at 05:42 PM
 --
 
 CREATE TABLE `EvidencijaIzdavanja` (
@@ -149,7 +149,33 @@ CREATE TABLE `EvidencijaIzdavanja` (
 
 --
 -- RELATIONSHIPS FOR TABLE `EvidencijaIzdavanja`:
+--   `ClanID`
+--       `Clanovi` -> `ID`
+--   `KnjigaID`
+--       `Knjige` -> `ID`
+--   `StatusIzdavanja`
+--       `StatusiIzdavanja` -> `ID`
 --
+
+--
+-- Dumping data for table `EvidencijaIzdavanja`
+--
+
+INSERT INTO `EvidencijaIzdavanja` (`ID`, `ClanID`, `KnjigaID`, `DatumIzdavanja`, `DatumOcVracanja`, `DatumVracanja`, `StatusIzdavanja`) VALUES
+(1, 10, 14, '2021-10-30', '2021-11-30', NULL, 2),
+(2, 4, 6, '2021-10-30', '2021-12-30', NULL, 2),
+(3, 3, 9, '2021-10-30', '2021-11-30', NULL, 2),
+(4, 11, 8, '2021-10-14', '2021-11-15', NULL, 2),
+(5, 4, 1, '2021-10-14', '2021-11-15', NULL, 2),
+(6, 5, 3, '2021-10-06', '2021-11-07', NULL, 2),
+(7, 2, 5, '2021-10-04', '2021-11-05', '2021-10-19', 1),
+(8, 1, 13, '2021-10-02', '2021-11-03', '2021-10-29', 1),
+(9, 6, 9, '2021-09-29', '2021-10-30', '2021-10-26', 1),
+(10, 3, 10, '2021-09-20', '2021-10-21', '2021-10-19', 1),
+(11, 4, 2, '2021-09-18', '2021-10-19', '2021-10-24', 1),
+(12, 4, 11, '2021-09-14', '2021-10-15', NULL, 3),
+(13, 8, 3, '2021-09-11', '2021-10-12', NULL, 3),
+(14, 3, 16, '2021-09-05', '2021-10-06', NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -225,6 +251,32 @@ INSERT INTO `StatusClana` (`ID`, `Opis`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `StatusiIzdavanja`
+--
+-- Creation: Oct 30, 2021 at 05:27 PM
+--
+
+CREATE TABLE `StatusiIzdavanja` (
+  `ID` tinyint(11) NOT NULL,
+  `Opis` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONSHIPS FOR TABLE `StatusiIzdavanja`:
+--
+
+--
+-- Dumping data for table `StatusiIzdavanja`
+--
+
+INSERT INTO `StatusiIzdavanja` (`ID`, `Opis`) VALUES
+(1, 'Vraćena'),
+(2, 'Nije vraćena, nije prekoračeno vreme'),
+(3, 'Nije vraćena, prekoračeno vreme');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Zanrovi`
 --
 -- Creation: Oct 10, 2021 at 05:40 PM
@@ -280,7 +332,10 @@ ALTER TABLE `Clanovi`
 -- Indexes for table `EvidencijaIzdavanja`
 --
 ALTER TABLE `EvidencijaIzdavanja`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `fk_StatusIzdavanja(ID)` (`StatusIzdavanja`),
+  ADD KEY `fk_ClanID(ID)` (`ClanID`),
+  ADD KEY `fk_KnjigaID(ID)` (`KnjigaID`);
 
 --
 -- Indexes for table `Knjige`
@@ -294,6 +349,12 @@ ALTER TABLE `Knjige`
 -- Indexes for table `StatusClana`
 --
 ALTER TABLE `StatusClana`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `StatusiIzdavanja`
+--
+ALTER TABLE `StatusiIzdavanja`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -328,7 +389,7 @@ ALTER TABLE `Clanovi`
 -- AUTO_INCREMENT for table `EvidencijaIzdavanja`
 --
 ALTER TABLE `EvidencijaIzdavanja`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `Knjige`
@@ -341,6 +402,12 @@ ALTER TABLE `Knjige`
 --
 ALTER TABLE `StatusClana`
   MODIFY `ID` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `StatusiIzdavanja`
+--
+ALTER TABLE `StatusiIzdavanja`
+  MODIFY `ID` tinyint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `Zanrovi`
@@ -358,6 +425,14 @@ ALTER TABLE `Zanrovi`
 ALTER TABLE `Clanovi`
   ADD CONSTRAINT `fk_Status(ID)` FOREIGN KEY (`Status`) REFERENCES `StatusClana` (`ID`),
   ADD CONSTRAINT `fk_TipClanarine(ID)` FOREIGN KEY (`TipClanarine`) REFERENCES `Clanarine` (`ID`);
+
+--
+-- Constraints for table `EvidencijaIzdavanja`
+--
+ALTER TABLE `EvidencijaIzdavanja`
+  ADD CONSTRAINT `fk_ClanID(ID)` FOREIGN KEY (`ClanID`) REFERENCES `Clanovi` (`ID`),
+  ADD CONSTRAINT `fk_KnjigaID(ID)` FOREIGN KEY (`KnjigaID`) REFERENCES `Knjige` (`ID`),
+  ADD CONSTRAINT `fk_StatusIzdavanja(ID)` FOREIGN KEY (`StatusIzdavanja`) REFERENCES `StatusiIzdavanja` (`ID`);
 
 --
 -- Constraints for table `Knjige`
