@@ -1,0 +1,10 @@
+
+1. ImeC, PrezC, ImeKnj, AutorKnj, DatOcVr, 
+OpisVr
+ako status vracanja nije vracena
+
+2. Ispisati ImeC, PrezC, OpisVr koji su
+iznajmljivali knjigu "Mrtvo more"
+
+3. Ispisati ImeC, PrezC, CenuClanarine
+svih aktivnih clanova
