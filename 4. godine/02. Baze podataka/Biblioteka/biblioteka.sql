@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 31, 2021 at 06:20 PM
+-- Generation Time: Nov 07, 2021 at 07:05 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -180,9 +180,26 @@ INSERT INTO `EvidencijaIzdavanja` (`ID`, `ClanID`, `KnjigaID`, `DatumIzdavanja`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Knjge_Zanrovi`
+--
+-- Creation: Nov 07, 2021 at 06:03 PM
+--
+
+CREATE TABLE `Knjge_Zanrovi` (
+  `KnjigaID` int(11) NOT NULL,
+  `ZanrID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONSHIPS FOR TABLE `Knjge_Zanrovi`:
+--
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Knjige`
 --
--- Creation: Oct 17, 2021 at 05:54 PM
+-- Creation: Nov 06, 2021 at 06:54 PM
 --
 
 CREATE TABLE `Knjige` (
@@ -336,6 +353,12 @@ ALTER TABLE `EvidencijaIzdavanja`
   ADD KEY `fk_StatusIzdavanja(ID)` (`StatusIzdavanja`),
   ADD KEY `fk_ClanID(ID)` (`ClanID`),
   ADD KEY `fk_KnjigaID(ID)` (`KnjigaID`);
+
+--
+-- Indexes for table `Knjge_Zanrovi`
+--
+ALTER TABLE `Knjge_Zanrovi`
+  ADD PRIMARY KEY (`KnjigaID`,`ZanrID`);
 
 --
 -- Indexes for table `Knjige`
