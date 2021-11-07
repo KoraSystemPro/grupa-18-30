@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 07, 2021 at 07:05 PM
+-- Generation Time: Nov 07, 2021 at 08:04 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -182,7 +182,8 @@ INSERT INTO `EvidencijaIzdavanja` (`ID`, `ClanID`, `KnjigaID`, `DatumIzdavanja`,
 --
 -- Table structure for table `Knjge_Zanrovi`
 --
--- Creation: Nov 07, 2021 at 06:03 PM
+-- Creation: Nov 07, 2021 at 06:09 PM
+-- Last update: Nov 07, 2021 at 06:34 PM
 --
 
 CREATE TABLE `Knjge_Zanrovi` (
@@ -192,20 +193,56 @@ CREATE TABLE `Knjge_Zanrovi` (
 
 --
 -- RELATIONSHIPS FOR TABLE `Knjge_Zanrovi`:
+--   `KnjigaID`
+--       `Knjige` -> `ID`
+--   `ZanrID`
+--       `Zanrovi` -> `ZanrID`
 --
+
+--
+-- Dumping data for table `Knjge_Zanrovi`
+--
+
+INSERT INTO `Knjge_Zanrovi` (`KnjigaID`, `ZanrID`) VALUES
+(1, 2),
+(1, 7),
+(2, 1),
+(2, 3),
+(2, 6),
+(3, 3),
+(3, 4),
+(4, 2),
+(5, 2),
+(6, 1),
+(6, 2),
+(7, 2),
+(7, 3),
+(8, 4),
+(9, 1),
+(9, 3),
+(9, 4),
+(10, 2),
+(10, 5),
+(11, 2),
+(11, 4),
+(12, 4),
+(13, 1),
+(14, 1),
+(14, 6),
+(16, 5);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `Knjige`
 --
--- Creation: Nov 06, 2021 at 06:54 PM
+-- Creation: Nov 07, 2021 at 06:50 PM
+-- Last update: Nov 07, 2021 at 06:50 PM
 --
 
 CREATE TABLE `Knjige` (
   `ID` int(11) NOT NULL COMMENT 'Primarni kljuc',
   `Ime` varchar(255) DEFAULT NULL COMMENT 'Naziv knjige',
-  `Zanr` int(11) DEFAULT NULL,
   `AutorID` int(11) DEFAULT NULL COMMENT 'Ime Autora',
   `BrojNaStanju` int(11) DEFAULT 0 COMMENT 'Trenutno brojno stanje'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -214,30 +251,28 @@ CREATE TABLE `Knjige` (
 -- RELATIONSHIPS FOR TABLE `Knjige`:
 --   `AutorID`
 --       `Autori` -> `ID`
---   `Zanr`
---       `Zanrovi` -> `ZanrID`
 --
 
 --
 -- Dumping data for table `Knjige`
 --
 
-INSERT INTO `Knjige` (`ID`, `Ime`, `Zanr`, `AutorID`, `BrojNaStanju`) VALUES
-(1, 'Rani jadi', 2, 1, 3),
-(2, 'Božanstvena komedija', 1, 2, 4),
-(3, 'O priči i pričanju', NULL, 3, 5),
-(4, 'Don Kihot', 2, 4, 6),
-(5, 'Dnevnik Ane Frank', NULL, 5, 4),
-(6, 'Most na Žepi', 2, 3, 4),
-(7, 'Mali princ', 3, 7, 7),
-(8, 'Činovnikova smrt', 4, 8, 7),
-(9, 'Mrtvo more', 4, 9, 7),
-(10, 'Romeo i Julija', 5, 10, 9),
-(11, 'Zona Zamfirova', 2, 14, 5),
-(12, 'Vođa', 4, 9, 7),
-(13, 'Kad su cvetale tikve', 1, 13, 5),
-(14, 'Pop Ćira i pop Spira', 1, 14, 10),
-(16, 'Danga', 4, 9, 0);
+INSERT INTO `Knjige` (`ID`, `Ime`, `AutorID`, `BrojNaStanju`) VALUES
+(1, 'Rani jadi', 1, 3),
+(2, 'Božanstvena komedija', 2, 4),
+(3, 'O priči i pričanju', 3, 5),
+(4, 'Don Kihot', 4, 6),
+(5, 'Dnevnik Ane Frank', 5, 4),
+(6, 'Most na Žepi', 3, 4),
+(7, 'Mali princ', 7, 7),
+(8, 'Činovnikova smrt', 8, 7),
+(9, 'Mrtvo more', 9, 7),
+(10, 'Romeo i Julija', 10, 9),
+(11, 'Zona Zamfirova', 14, 5),
+(12, 'Vođa', 9, 7),
+(13, 'Kad su cvetale tikve', 13, 5),
+(14, 'Pop Ćira i pop Spira', 14, 10),
+(16, 'Danga', 9, 0);
 
 -- --------------------------------------------------------
 
@@ -297,6 +332,7 @@ INSERT INTO `StatusiIzdavanja` (`ID`, `Opis`) VALUES
 -- Table structure for table `Zanrovi`
 --
 -- Creation: Oct 10, 2021 at 05:40 PM
+-- Last update: Nov 07, 2021 at 06:27 PM
 --
 
 CREATE TABLE `Zanrovi` (
@@ -319,7 +355,8 @@ INSERT INTO `Zanrovi` (`ZanrID`, `ImeZanra`, `OpisZanra`) VALUES
 (3, 'Tragedija', 'Puno duge, placa i jada'),
 (4, 'Satira', 'Glupost naroda'),
 (5, 'Romansa', 'Ljubav i spanske sapunice'),
-(6, 'Horor', 'Spooky scary skeletoons');
+(6, 'Horor', 'Spooky scary skeletoons'),
+(7, 'Biografija', 'Opisuje nečiji tuđi život.');
 
 --
 -- Indexes for dumped tables
@@ -358,14 +395,14 @@ ALTER TABLE `EvidencijaIzdavanja`
 -- Indexes for table `Knjge_Zanrovi`
 --
 ALTER TABLE `Knjge_Zanrovi`
-  ADD PRIMARY KEY (`KnjigaID`,`ZanrID`);
+  ADD PRIMARY KEY (`KnjigaID`,`ZanrID`),
+  ADD KEY `fk_ZanrID(ZanrID)_Zanrovi` (`ZanrID`);
 
 --
 -- Indexes for table `Knjige`
 --
 ALTER TABLE `Knjige`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `Ime Zanra` (`Zanr`),
   ADD KEY `Autor Ime` (`AutorID`);
 
 --
@@ -436,7 +473,7 @@ ALTER TABLE `StatusiIzdavanja`
 -- AUTO_INCREMENT for table `Zanrovi`
 --
 ALTER TABLE `Zanrovi`
-  MODIFY `ZanrID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ZanrID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
@@ -458,11 +495,17 @@ ALTER TABLE `EvidencijaIzdavanja`
   ADD CONSTRAINT `fk_StatusIzdavanja(ID)` FOREIGN KEY (`StatusIzdavanja`) REFERENCES `StatusiIzdavanja` (`ID`);
 
 --
+-- Constraints for table `Knjge_Zanrovi`
+--
+ALTER TABLE `Knjge_Zanrovi`
+  ADD CONSTRAINT `fk_KnjigeID(ID)_Knjige` FOREIGN KEY (`KnjigaID`) REFERENCES `Knjige` (`ID`),
+  ADD CONSTRAINT `fk_ZanrID(ZanrID)_Zanrovi` FOREIGN KEY (`ZanrID`) REFERENCES `Zanrovi` (`ZanrID`);
+
+--
 -- Constraints for table `Knjige`
 --
 ALTER TABLE `Knjige`
-  ADD CONSTRAINT `Autor Ime` FOREIGN KEY (`AutorID`) REFERENCES `Autori` (`ID`),
-  ADD CONSTRAINT `Ime Zanra` FOREIGN KEY (`Zanr`) REFERENCES `Zanrovi` (`ZanrID`);
+  ADD CONSTRAINT `Autor Ime` FOREIGN KEY (`AutorID`) REFERENCES `Autori` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
