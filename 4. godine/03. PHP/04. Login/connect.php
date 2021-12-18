@@ -9,7 +9,7 @@
         <form method="POST" action="register.php">
             <input type="email" name="email" placeholder="E-mail"><br>
             <input type="password" name="pwd" placeholder="Password"><br>
-            <input type="submit"><br>
+            <input type="submit" value="Register"><br>
         </form>
         <br>
         <br>
@@ -18,13 +18,20 @@
         <form method="POST" action="login.php">
             <input type="email" name="email" placeholder="E-mail"><br>
             <input type="password" name="pwd" placeholder="Password"><br>
-            <input type="submit"><br>
+            <input type="checkbox" name="staySignedIn">
+            <input type="submit" value="Login"><br>
         </form>
         <br>
         <br>
 
 
        <?php
+            session_start();
+            if($_SESSION['valid'] == true){
+                header("location:dobrodoslica.php");
+            }
+
+            // Zapocinjemo sesiju
             $hostname = "localhost";
             $username = "root";
             $password = "";
@@ -45,11 +52,11 @@
 
             // Asocijativni pristup
             // Pristup putem imena kolone
-            while($red = mysqli_fetch_assoc($rezultat)){
+            while($red = $rezultat->fetch_assoc()){
                 echo($red['ID'] . " : " . $red['Email'] . " : " . $red['Password'] .  "<br>");
             }
             // Indeksni pristup
-            while($red = mysqli_fetch_row($rezultat)){
+            while($red = $rezultat->fetch_row()){
                 echo("$red[0] : $red[1] : $red[2]<br>");
             }
             
