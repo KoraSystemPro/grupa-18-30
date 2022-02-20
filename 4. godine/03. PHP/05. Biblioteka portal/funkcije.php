@@ -1,4 +1,6 @@
 <?php
+    include "popups.php";
+
     function DohvatiPretragu($ime, $autor, $zanr){
         // Ako su svi prazni, nema WHERE
         if(empty($ime) && empty($autor) && empty($zanr)){
@@ -24,6 +26,32 @@
         }
 
         return $where_SQL;
+    }
+
+    function provera_opcije(){
+        switch($_GET['opcija']){
+            case "vracanje_knjige":
+                popup_vracanje_knjige();
+                break;
+            case "izdavanje_knjige":
+                popup_izdavanje_knjige();
+                break;
+            case "dodavanje_baza":
+                popup_dodavanje_u_bazu();
+                break;
+            case "brisanje_baza":
+                popup_brisanje_iz_baze();
+                break;
+            case "provera_clana":
+                popup_provera_clana();
+                break;
+            case "dodavanje_clana":
+                popup_dodavanje_clana();
+                break;
+            default:
+                unset($_GET['opcija']);
+                break;
+        }
     }
 
 ?>
