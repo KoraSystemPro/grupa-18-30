@@ -13,8 +13,56 @@ include "funkcije.php";
 <body>
     <?php
         provera_opcije();
-        
+        $konekcija = OtvoriKonekciju();
+        $curent_date = date('Y-m-d');
+        $next_month = date('Y-m-d', strtotime('+1 month'));
+
+        $sql = "INSERT INTO EvidencijaIzdavanja(ClanID, KnjigaID, DatumIzdavanja, DatumOcVracanja, StatusIzdavanja) 
+                VALUES ('" . $_GET['clanID'] . "','" . $_GET['knjigaID'] . "', '" . $curent_date . "', '" . $next_month . "', '" . 2 . "')";
+        $konekcija->query($sql);
+        ZatvoriKonekciju($konekcija);
+
     ?>
+
+    <div class="popup-izdavanje-knjige">
+        <div class="zamuti"></div>
+        <form class="popup-form" action="index.php" method="get">
+            <h4 class="podnaslov">Izdavanje Knjige</h4>
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">ID Člana</span>
+                <input name="clanID" type="number" class="form-control">
+            </div>
+            <select class="form-select" name="knjigaID">
+                <!-- <option value=""></option> -->
+                <?php
+                    $konekcija = OtvoriKonekciju();
+                    $sql = "SELECT Knjige.ID, Knjige.Ime, Autori.Ime, Knjige.BrojNaStanju
+                            FROM Knjige INNER JOIN Autori ON AutorID=Autori.ID ORDER BY Knjige.Ime ASC";
+                    $rez = $konekcija->query($sql);
+                    if($rez->num_rows > 0){
+                        while($row = $rez->fetch_array()){
+                            echo '<option ' . (($row[3]==0) ? 'disabled' : '') . ' value="' . $row[0] . '">' . $row[1] . ' - ' . $row[2] . ' - ' . $row[3] . ' na stanju</option>';
+                        }
+                    }
+
+                    ZatvoriKonekciju($konekcija);
+                
+                    // if($row[3] == 0){
+                    //     nadovezi diabled
+                    // } else {
+                    //     nemoj nadovezati disabled
+                    // }
+                    
+                    // ?: Jednolinijska provera
+                    // (uslov) ? tacna : netacna
+                    // ($row[3] == 0) ? nadovezi disabled : nemoj nadovezati                       
+                ?>
+
+            </select>
+            <button type="submit" class="btn btn-primary">Iznajmi</button>
+            <button name="opcija" value="" type="submit" class="btn btn-danger">Otkaži</button>
+        </form>
+    </div>
     
 
     <form action="index.php" method="get">

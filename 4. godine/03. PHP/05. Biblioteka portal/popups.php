@@ -27,7 +27,7 @@ function popup_dodavanje_clana(){
                 <span class="input-group-text" id="inputGroup-sizing-sm">Prezime</span>
                 <input name="prezimeClana" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
             </div>
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select">
                 <?php 
                 $kon = OtvoriKonekciju();
                 $rez = $kon->query("SELECT * FROM Clanarine");
