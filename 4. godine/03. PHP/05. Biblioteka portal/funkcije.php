@@ -1,5 +1,4 @@
 <?php
-    include "popups.php";
 
     function DohvatiPretragu($ime, $autor, $zanr){
         // Ako su svi prazni, nema WHERE
