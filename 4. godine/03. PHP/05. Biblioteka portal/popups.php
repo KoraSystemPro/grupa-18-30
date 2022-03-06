@@ -93,14 +93,30 @@ function popup_provera_clana(){
         <div class="popup-pretraga-clana">
         <div class="zamuti"></div>
         <form class="popup-form" action="index.php" method="get">
-            <h4 class="podnaslov">Pretaga Člana</h4>
+            <h4 class="podnaslov">Pretraga Člana</h4>
             <div class="input-group input-group-sm mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-sm">ID Člana</span>
                 <input name="clanID" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
             </div>
             <button type="submit" class="btn btn-primary">Pretraži</button>
-            <button name="opcija" value="" type="submit" class="btn btn-danger">Otkaži</button>
+            <button name="opcija" value="status_clana" type="submit" class="btn btn-danger">Otkaži</button>
         </form>
+        </div>
+        ';
+}
+function popup_status_clana(){
+    echo '
+        <div class="popup-status-clana">
+            <div class="zamuti"></div>
+            <form class="popup-form" action="index.php" method="get">
+                <h4 class="podnaslov">Status Člana</h4>
+                <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">ID Člana</span>
+                    <input name="clanID" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <button type="submit" class="btn btn-primary">Pretraži</button>
+                <button name="opcija" value="status_clana" type="submit" class="btn btn-danger">Otkaži</button>
+            </form>
         </div>
         ';
 }

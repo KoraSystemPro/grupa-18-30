@@ -12,6 +12,49 @@ include "popups.php";
     <title>BibliotekaPro</title>
 </head>
 <body>
+        <div class="popup-status-clana">
+            <?php 
+                $konekcija = OtvoriKonekciju();
+                $sql = "SELECT Clanovi.Ime, Clanovi.Prezime, Clanovi.DatumPrijave, Clanarine.Opis AS OpisClanarine, StatusClana.Opis AS OpisStatusa 
+                        FROM Clanovi 
+                        INNER JOIN Clanarine ON Clanovi.TipClanarine=Clanarine.ID
+                        INNER JOIN StatusClana ON Clanovi.Status=StatusClana.ID
+                        WHERE Clanovi.ID=" . $_GET['clanID'] . ";";
+                $rez = $konekcija->query($sql)->fetch_assoc();
+
+
+                ZatvoriKonekciju($konekcija);
+            ?>
+            <div class="zamuti"></div>
+            <h4 class="podnaslov">Status Člana</h4>
+            <form class="popup-form" action="index.php" method="get">
+                <div class="statusClanaPolja">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">ID Člana</span>
+                    <span class="input-group-text" id="inputGroup-sizing-sm"><?php echo $_GET['clanID']?></span>
+                </div>
+                <div class="statusClanaPolja">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Ime</span>
+                    <span class="input-group-text" id="inputGroup-sizing-sm"><?php echo $rez['Ime']?></span>
+                </div>
+                <div class="statusClanaPolja">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Prezime</span>
+                    <span class="input-group-text" id="inputGroup-sizing-sm"><?php echo $rez['Prezime']?></span>
+                </div>
+                <div class="statusClanaPolja">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Datum Prijave</span>
+                    <span class="input-group-text" id="inputGroup-sizing-sm"><?php echo $rez['DatumPrijave']?></span>
+                </div>
+                <div class="statusClanaPolja">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Tip Clanarine</span>
+                    <span class="input-group-text" id="inputGroup-sizing-sm"><?php echo $rez['OpisClanarine']?></span>
+                </div>
+                <div class="statusClanaPolja">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Status Clana</span>
+                    <span class="input-group-text" id="inputGroup-sizing-sm"><?php echo $rez['OpisStatusa']?></span>
+                </div>
+                <button name="opcija" value="status_clana" type="submit" class="btn btn-danger">Otkaži</button>
+            </form>
+        </div>
     <?php
         provera_opcije();
 
@@ -30,17 +73,17 @@ include "popups.php";
         <div class="zaglavlje">
             <div class="pretraga">
                 <h4 class="podnaslov">Pretraga</h4>
-                <div class="input-group input-group-sm mb-3" name="knjiga">
+                <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Knjiga</span>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    <input type="text" class="form-control" name="knjiga" value=<?php echo('"' . $_GET['knjiga'] .'"') ?>>
                 </div>
-                <div class="input-group input-group-sm mb-3" name="autor">
+                <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Autor</span>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    <input type="text" class="form-control" name="autor" value=<?php echo('"' . $_GET['autor'] .'"') ?>>
                 </div>
-                <div class="input-group input-group-sm mb-3" name="zanr">
+                <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Zanr</span>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    <input type="text" class="form-control" name="zanr" value=<?php echo('"' . $_GET['zanr'] .'"') ?>>
                 </div>
                 <button type="submit" class="btn btn-primary">Pretraži</button>
             </div>
@@ -86,6 +129,7 @@ include "popups.php";
                 INNER JOIN Knjige_Zanrovi ON Knjige_Zanrovi.KnjigaID=Knjige.ID
                 INNER JOIN Zanrovi ON Zanrovi.ZanrID=Knjige_Zanrovi.ZanrID
                 " . $pretraga_WHERE . ";";
+        echo($query);
         if($rezultat = $konekcija->query($query)){
             while($row = $rezultat->fetch_array()){
                 echo("<tr scope='row'>");
@@ -108,6 +152,7 @@ include "popups.php";
 
     <?php
         // Ime knjige, Ime autora, Zanr, broj na stanju
+        $konekcija = OtvoriKonekciju();
         $sql = "SELECT Knjige.Ime, GROUP_CONCAT(Zanrovi.ImeZanra)
             FROM Knjige_Zanrovi
             INNER JOIN Knjige ON Knjige.ID=Knjige_Zanrovi.KnjigaID
@@ -118,8 +163,7 @@ include "popups.php";
         if($rezultat == false){
             $echo("Greska pri kveriju!\n");
         }
-
-        $konekcija->close();
+        ZatvoriKonekciju($konekcija);
     ?>
 </body>
 </html>
