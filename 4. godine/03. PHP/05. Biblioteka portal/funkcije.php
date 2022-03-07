@@ -1,4 +1,36 @@
 <?php
+    function DohvatiIzdateKnjige(){
+        $konekcija = OtvoriKonekciju();
+
+        $sql = "
+            SELECT Knjige.ID KnjigaID, Knjige.Ime Knjiga, Autori.Ime Autor, EvidencijaIzdavanja.DatumIzdavanja, EvidencijaIzdavanja.DatumOcVracanja, 
+            StatusiIzdavanja.Opis
+            FROM EvidencijaIzdavanja 
+            INNER JOIN Knjige ON EvidencijaIzdavanja.KnjigaID=Knjige.ID
+            INNER JOIN Autori ON Knjige.AutorID=Autori.ID
+            INNER JOIN StatusiIzdavanja ON StatusiIzdavanja.ID=EvidencijaIzdavanja.StatusIzdavanja
+            WHERE EvidencijaIzdavanja.ClanID=" . $_GET['clanID'] . " AND EvidencijaIzdavanja.StatusIzdavanja NOT IN (1) 
+            ORDER BY EvidencijaIzdavanja.StatusIzdavanja DESC;";
+        $rez = $konekcija->query($sql);
+        while($row = $rez->fetch_assoc()){
+            echo '<tr>';
+                echo '<td>'. $row['Knjiga'] .'</td>';
+                echo '<td>'. $row['Autor'] .'</td>';
+                echo '<td>'. $row['DatumIzdavanja'] .'</td>';
+                echo '<td>'. $row['DatumOcVracanja'] .'</td>';
+                echo '<td>'. $row['Opis'] .'</td>';
+                echo '  <td>
+                            <form action="./vracanje_knjige.php" method="GET">
+                                <input type="hidden" name="clanID" value="' . $_GET['clanID'] . '"/>
+                                <button name="produzavanje" value="true" type="submit" class="btn btn-outline-primary">Produžavanje</button>
+                                <button name="knjigaID" value="'. $row['KnjigaID'] .'" type="submit" class="btn btn-outline-success">Vrati knjigu</button>
+                            </form>
+                        </td>';
+            echo '</tr>';
+        }
+
+        ZatvoriKonekciju($konekcija);
+    }
 
     function DohvatiPretragu($ime, $autor, $zanr){
         // Ako su svi prazni, nema WHERE

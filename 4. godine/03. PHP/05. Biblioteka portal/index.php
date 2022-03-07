@@ -23,36 +23,61 @@ include "popups.php";
                 $rez = $konekcija->query($sql)->fetch_assoc();
 
 
+
                 ZatvoriKonekciju($konekcija);
             ?>
             <div class="zamuti"></div>
-            <h4 class="podnaslov">Status Člana</h4>
-            <form class="popup-form" action="index.php" method="get">
-                <div class="statusClanaPolja">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">ID Člana</span>
-                    <span class="input-group-text" id="inputGroup-sizing-sm"><?php echo $_GET['clanID']?></span>
+            <form class="popup-form-status" action="index.php" method="get">
+                <h4 class="podnaslov">Status Člana</h4>
+                <div class="status-content row">
+                    <div class="status-clana col-md-3">
+                        <div class="statusClanaPolja row">
+                            <span class="input-group-text col opis-polja" id="inputGroup-sizing-sm">ID Člana</span>
+                            <span class="input-group-text col" id="inputGroup-sizing-sm"><?php echo $_GET['clanID']?></span>
+                        </div>
+                        <div class="statusClanaPolja row">
+                            <span class="input-group-text col opis-polja" id="inputGroup-sizing-sm">Ime</span>
+                            <span class="input-group-text col" id="inputGroup-sizing-sm"><?php echo $rez['Ime']?></span>
+                        </div>
+                        <div class="statusClanaPolja row">
+                            <span class="input-group-text col opis-polja" id="inputGroup-sizing-sm">Prezime</span>
+                            <span class="input-group-text col" id="inputGroup-sizing-sm"><?php echo $rez['Prezime']?></span>
+                        </div>
+                        <div class="statusClanaPolja row">
+                            <span class="input-group-text col opis-polja" id="inputGroup-sizing-sm">Datum Prijave</span>
+                            <span class="input-group-text col" id="inputGroup-sizing-sm"><?php echo $rez['DatumPrijave']?></span>
+                        </div>
+                        <div class="statusClanaPolja row">
+                            <span class="input-group-text col opis-polja" id="inputGroup-sizing-sm">Tip Clanarine</span>
+                            <span class="input-group-text col" id="inputGroup-sizing-sm"><?php echo $rez['OpisClanarine']?></span>
+                        </div>
+                        <div class="statusClanaPolja row">
+                            <span class="input-group-text col opis-polja" id="inputGroup-sizing-sm">Status Clana</span>
+                            <span class="input-group-text col" id="inputGroup-sizing-sm"><?php echo $rez['OpisStatusa']?></span>
+                        </div>
+                        <button name="opcija" value="status_clana" type="submit" class="btn btn-danger">Otkaži</button>
+                    </div>
+                    <div class="table-responsive statusClanaKnjige col">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Ime knjige</th>
+                                    <th scope="col">Autor knjige</th>
+                                    <th scope="col">Datum Izdavanja</th>
+                                    <th scope="col">Datum Očekivanog vraćanja</th>
+                                    <th scope="col">Status Izdavanja</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    // Izdvojiti sve knjige za ID osobe koje nisu vracene
+                                    DohvatiIzdateKnjige();
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="statusClanaPolja">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Ime</span>
-                    <span class="input-group-text" id="inputGroup-sizing-sm"><?php echo $rez['Ime']?></span>
-                </div>
-                <div class="statusClanaPolja">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Prezime</span>
-                    <span class="input-group-text" id="inputGroup-sizing-sm"><?php echo $rez['Prezime']?></span>
-                </div>
-                <div class="statusClanaPolja">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Datum Prijave</span>
-                    <span class="input-group-text" id="inputGroup-sizing-sm"><?php echo $rez['DatumPrijave']?></span>
-                </div>
-                <div class="statusClanaPolja">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Tip Clanarine</span>
-                    <span class="input-group-text" id="inputGroup-sizing-sm"><?php echo $rez['OpisClanarine']?></span>
-                </div>
-                <div class="statusClanaPolja">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Status Clana</span>
-                    <span class="input-group-text" id="inputGroup-sizing-sm"><?php echo $rez['OpisStatusa']?></span>
-                </div>
-                <button name="opcija" value="status_clana" type="submit" class="btn btn-danger">Otkaži</button>
             </form>
         </div>
     <?php
