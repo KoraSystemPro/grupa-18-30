@@ -7,79 +7,12 @@ include "popups.php";
 <html lang="en">
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="./bootstrap.min.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
     <link href="./stil.css" rel="stylesheet" type="text/css">
     <title>BibliotekaPro</title>
 </head>
 <body>
-        <div class="popup-status-clana">
-            <?php 
-                $konekcija = OtvoriKonekciju();
-                $sql = "SELECT Clanovi.Ime, Clanovi.Prezime, Clanovi.DatumPrijave, Clanarine.Opis AS OpisClanarine, StatusClana.Opis AS OpisStatusa 
-                        FROM Clanovi 
-                        INNER JOIN Clanarine ON Clanovi.TipClanarine=Clanarine.ID
-                        INNER JOIN StatusClana ON Clanovi.Status=StatusClana.ID
-                        WHERE Clanovi.ID=" . $_GET['clanID'] . ";";
-                $rez = $konekcija->query($sql)->fetch_assoc();
-
-
-
-                ZatvoriKonekciju($konekcija);
-            ?>
-            <div class="zamuti"></div>
-            <form class="popup-form-status" action="index.php" method="get">
-                <h4 class="podnaslov">Status Člana</h4>
-                <div class="status-content row">
-                    <div class="status-clana col-md-3">
-                        <div class="statusClanaPolja row">
-                            <span class="input-group-text col opis-polja" id="inputGroup-sizing-sm">ID Člana</span>
-                            <span class="input-group-text col" id="inputGroup-sizing-sm"><?php echo $_GET['clanID']?></span>
-                        </div>
-                        <div class="statusClanaPolja row">
-                            <span class="input-group-text col opis-polja" id="inputGroup-sizing-sm">Ime</span>
-                            <span class="input-group-text col" id="inputGroup-sizing-sm"><?php echo $rez['Ime']?></span>
-                        </div>
-                        <div class="statusClanaPolja row">
-                            <span class="input-group-text col opis-polja" id="inputGroup-sizing-sm">Prezime</span>
-                            <span class="input-group-text col" id="inputGroup-sizing-sm"><?php echo $rez['Prezime']?></span>
-                        </div>
-                        <div class="statusClanaPolja row">
-                            <span class="input-group-text col opis-polja" id="inputGroup-sizing-sm">Datum Prijave</span>
-                            <span class="input-group-text col" id="inputGroup-sizing-sm"><?php echo $rez['DatumPrijave']?></span>
-                        </div>
-                        <div class="statusClanaPolja row">
-                            <span class="input-group-text col opis-polja" id="inputGroup-sizing-sm">Tip Clanarine</span>
-                            <span class="input-group-text col" id="inputGroup-sizing-sm"><?php echo $rez['OpisClanarine']?></span>
-                        </div>
-                        <div class="statusClanaPolja row">
-                            <span class="input-group-text col opis-polja" id="inputGroup-sizing-sm">Status Clana</span>
-                            <span class="input-group-text col" id="inputGroup-sizing-sm"><?php echo $rez['OpisStatusa']?></span>
-                        </div>
-                        <button name="opcija" value="status_clana" type="submit" class="btn btn-danger">Otkaži</button>
-                    </div>
-                    <div class="table-responsive statusClanaKnjige col">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Ime knjige</th>
-                                    <th scope="col">Autor knjige</th>
-                                    <th scope="col">Datum Izdavanja</th>
-                                    <th scope="col">Datum Očekivanog vraćanja</th>
-                                    <th scope="col">Status Izdavanja</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                    // Izdvojiti sve knjige za ID osobe koje nisu vracene
-                                    DohvatiIzdateKnjige();
-                                ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </form>
-        </div>
     <?php
         provera_opcije();
 

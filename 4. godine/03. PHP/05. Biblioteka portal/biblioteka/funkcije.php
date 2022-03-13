@@ -4,11 +4,11 @@
 
         $sql = "
             SELECT Knjige.ID KnjigaID, Knjige.Ime Knjiga, Autori.Ime Autor, EvidencijaIzdavanja.DatumIzdavanja, EvidencijaIzdavanja.DatumOcVracanja, 
-            StatusiIzdavanja.Opis
+                EvidencijaIzdavanja.ID AS IzdavanjeID, StatusiIzdavanja.Opis
             FROM EvidencijaIzdavanja 
-            INNER JOIN Knjige ON EvidencijaIzdavanja.KnjigaID=Knjige.ID
-            INNER JOIN Autori ON Knjige.AutorID=Autori.ID
-            INNER JOIN StatusiIzdavanja ON StatusiIzdavanja.ID=EvidencijaIzdavanja.StatusIzdavanja
+                INNER JOIN Knjige ON EvidencijaIzdavanja.KnjigaID=Knjige.ID
+                INNER JOIN Autori ON Knjige.AutorID=Autori.ID
+                INNER JOIN StatusiIzdavanja ON StatusiIzdavanja.ID=EvidencijaIzdavanja.StatusIzdavanja
             WHERE EvidencijaIzdavanja.ClanID=" . $_GET['clanID'] . " AND EvidencijaIzdavanja.StatusIzdavanja NOT IN (1) 
             ORDER BY EvidencijaIzdavanja.StatusIzdavanja DESC;";
         $rez = $konekcija->query($sql);
@@ -22,8 +22,10 @@
                 echo '  <td>
                             <form action="./vracanje_knjige.php" method="GET">
                                 <input type="hidden" name="clanID" value="' . $_GET['clanID'] . '"/>
+                                <input type="hidden" name="knjigaID" value="'. $row['KnjigaID'] . '"/>
+                                <input type="hidden" name="izdavanjeID" value="'. $row['IzdavanjeID'] . '"/>
                                 <button name="produzavanje" value="true" type="submit" class="btn btn-outline-primary">Produžavanje</button>
-                                <button name="knjigaID" value="'. $row['KnjigaID'] .'" type="submit" class="btn btn-outline-success">Vrati knjigu</button>
+                                <button name="vracanje" value="true" type="submit" class="btn btn-outline-success">Vrati knjigu</button>
                             </form>
                         </td>';
             echo '</tr>';
