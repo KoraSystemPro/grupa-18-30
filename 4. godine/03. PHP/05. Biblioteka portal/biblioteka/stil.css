@@ -19,15 +19,20 @@ body{
     width: 55%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.opcije form{
+    width: 100%;
 }
 
 .podnaslov{
     font-size: 16pt;
 }
 
-
 .izdavanje-knjiga, .rad-sa-bazom, .rad-sa-clanovima{
+    margin-right: 20pt;
     padding: 10px;
     display: flex;
     flex-direction: column;

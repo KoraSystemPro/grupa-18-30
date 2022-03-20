@@ -1,8 +1,6 @@
 <?php
 
-function popup_vracanje_knjige(){
 
-}
 function popup_izdavanje_knjige(){
     $konekcija = OtvoriKonekciju();
     $sql = "SELECT Knjige.ID, Knjige.Ime, Autori.Ime, Knjige.BrojNaStanju
@@ -40,7 +38,7 @@ function popup_izdavanje_knjige(){
 
             </select>
             <button type="submit" class="btn btn-primary">Iznajmi</button>
-            <button name="opcija" value="" type="submit" class="btn btn-danger">Otkaži</button>
+            <button name="opcija" value="vracanje" type="submit" class="btn btn-danger">Otkaži</button>
         </form>
     </div>
     ';
@@ -72,17 +70,17 @@ function popup_dodavanje_clana(){
             <h4 class="podnaslov">Dodavanje Člana</h4>
             <div class="input-group input-group-sm mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Ime</span>
-                <input name="imeClana" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                <input name="imeClana" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
             </div>
             <div class="input-group input-group-sm mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Prezime</span>
-                <input name="prezimeClana" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                <input name="prezimeClana" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
             </div>
             <select name="tipClanarine" class="form-select">
                 ' . $options . ' 
             </select>
             <button type="submit" class="btn btn-primary">Dodaj</button>
-            <button name="opcija" value="" type="submit" class="btn btn-danger">Otkaži</button>
+            <button name="opcija" value="vracanje" type="submit" class="btn btn-danger">Otkaži</button>
 
         </form>
     </div>
@@ -98,13 +96,13 @@ function popup_provera_clana(){
                 <span class="input-group-text" id="inputGroup-sizing-sm">ID Člana</span>
                 <input name="clanID" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
             </div>
-            <button type="submit" class="btn btn-primary">Pretraži</button>
-            <button name="opcija" value="status_clana" type="submit" class="btn btn-danger">Otkaži</button>
+            <button name="opcija" value="status_clana" type="submit" class="btn btn-primary">Pretraži</button>
+            <button name="opcija" value="povratak" type="submit" class="btn btn-danger">Otkaži</button>
         </form>
         </div>
         ';
 }
-function popup_status_clana(){
+function popup_status_clana($clanID){
     // echo '
     //     <div class="popup-status-clana">
     //         <div class="zamuti"></div>
@@ -119,12 +117,13 @@ function popup_status_clana(){
     //         </form>
     //     </div>
     //     ';
+    
         $konekcija = OtvoriKonekciju();
         $sql = "SELECT Clanovi.Ime, Clanovi.Prezime, Clanovi.DatumPrijave, Clanarine.Opis AS OpisClanarine, StatusClana.Opis AS OpisStatusa 
                 FROM Clanovi 
                 INNER JOIN Clanarine ON Clanovi.TipClanarine=Clanarine.ID
                 INNER JOIN StatusClana ON Clanovi.Status=StatusClana.ID
-                WHERE Clanovi.ID='" . $_GET['clanID'] . "';";
+                WHERE Clanovi.ID='" . $clanID . "';";
         $rez = $konekcija->query($sql)->fetch_assoc();
         ZatvoriKonekciju($konekcija);
 
@@ -137,29 +136,29 @@ function popup_status_clana(){
                     <div class="status-clana col-md-3">
                         <div class="statusClanaPolja row">
                             <span class="input-group-text col opis-polja" id="inputGroup-sizing-sm">ID Člana</span>
-                            <span class="input-group-text col" id="inputGroup-sizing-sm"><?php echo $_GET[\'clanID\']?></span>
+                            <span class="input-group-text col" id="inputGroup-sizing-sm">' . $clanID . '</span>
                         </div>
                         <div class="statusClanaPolja row">
                             <span class="input-group-text col opis-polja" id="inputGroup-sizing-sm">Ime</span>
-                            <span class="input-group-text col" id="inputGroup-sizing-sm"><?php echo $rez[\'Ime\']?></span>
+                            <span class="input-group-text col" id="inputGroup-sizing-sm">' .$rez['Ime'] . '</span>
                         </div>
                         <div class="statusClanaPolja row">
                             <span class="input-group-text col opis-polja" id="inputGroup-sizing-sm">Prezime</span>
-                            <span class="input-group-text col" id="inputGroup-sizing-sm"><?php echo $rez[\'Prezime\']?></span>
+                            <span class="input-group-text col" id="inputGroup-sizing-sm">' . $rez['Prezime'] . '</span>
                         </div>
                         <div class="statusClanaPolja row">
                             <span class="input-group-text col opis-polja" id="inputGroup-sizing-sm">Datum Prijave</span>
-                            <span class="input-group-text col" id="inputGroup-sizing-sm"><?php echo $rez[\'DatumPrijave\']?></span>
+                            <span class="input-group-text col" id="inputGroup-sizing-sm">' . $rez['DatumPrijave'] . '</span>
                         </div>
                         <div class="statusClanaPolja row">
                             <span class="input-group-text col opis-polja" id="inputGroup-sizing-sm">Tip Clanarine</span>
-                            <span class="input-group-text col" id="inputGroup-sizing-sm"><?php echo $rez[\'OpisClanarine\']?></span>
+                            <span class="input-group-text col" id="inputGroup-sizing-sm">' . $rez['OpisClanarine'] . '</span>
                         </div>
                         <div class="statusClanaPolja row">
                             <span class="input-group-text col opis-polja" id="inputGroup-sizing-sm">Status Clana</span>
-                            <span class="input-group-text col" id="inputGroup-sizing-sm"><?php echo $rez[\'OpisStatusa\']?></span>
+                            <span class="input-group-text col" id="inputGroup-sizing-sm">' . $rez['OpisStatusa'] . '</span>
                         </div>
-                        <button name="opcija" value="status_clana" type="submit" class="btn btn-danger">Otkaži</button>
+                        <button name="opcija" value="povratak" type="submit" class="btn btn-danger">Otkaži</button>
                     </div>
                     </form>
                     <div class="table-responsive statusClanaKnjige col">
@@ -175,10 +174,8 @@ function popup_status_clana(){
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                    // Izdvojiti sve knjige za ID osobe koje nisu vracene
-                                    DohvatiIzdateKnjige();
-                                ?>
+                                    <!-- Izdvojiti sve knjige za ID osobe koje nisu vracene -->
+                                    ' . DohvatiIzdateKnjige() . '
                             </tbody>
                         </table>
                     </div>
@@ -186,6 +183,7 @@ function popup_status_clana(){
             
         </div>
         ';
+        
 }
 
 

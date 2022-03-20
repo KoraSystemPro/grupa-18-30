@@ -27,44 +27,47 @@ include "popups.php";
 
     ?>
 
-    <form action="index.php" method="get">
-        <div class="zaglavlje">
+    <div class="zaglavlje">
+        <form action="index.php" method="get">
             <div class="pretraga">
                 <h4 class="podnaslov">Pretraga</h4>
                 <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Knjiga</span>
-                    <input type="text" class="form-control" name="knjiga" value=<?php echo('"' . $_GET['knjiga'] .'"') ?>>
+                    <input type="text" class="form-control" name="knjiga" value=<?php echo('"' . isset($_GET['knjiga']) ? $_GET['knjiga'] : '' .'"') ?>>
                 </div>
                 <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Autor</span>
-                    <input type="text" class="form-control" name="autor" value=<?php echo('"' . $_GET['autor'] .'"') ?>>
+                    <input type="text" class="form-control" name="autor" value=<?php echo('"' . isset($_GET['autor']) ? $_GET['autor'] : '' .'"') ?>>
                 </div>
                 <div class="input-group input-group-sm mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Zanr</span>
-                    <input type="text" class="form-control" name="zanr" value=<?php echo('"' . $_GET['zanr'] .'"') ?>>
+                    <input type="text" class="form-control" name="zanr" value=<?php echo('"' . isset($_GET['zanr']) ? $_GET['zanr'] : '' .'"') ?>>
                 </div>
                 <button type="submit" class="btn btn-primary">Pretraži</button>
             </div>
+        </form>
             <div class="opcije">
-                <div class="izdavanje-knjiga">
-                    <h4 class="podnaslov">Izdavanje</h4>
-                    <button name="opcija" value="vracanje_knjige" type="submit" class="btn btn-outline-primary">Vraćanje knjige</button>
-                    <button name="opcija" value="izdavanje_knjige" type="submit" class="btn btn-outline-primary">Izdavanje knjige</button>
-                </div>
-                <div class="rad-sa-bazom">
-                    <h4 class="podnaslov">Rad sa bazom</h4>
-                    <button name="opcija" value="dodavanje_baza" type="submit" class="btn btn-outline-primary">Dodavanje u bazu</button>
-                    <button name="opcija" value="brisanje_baza" type="submit" class="btn btn-outline-primary">Brisanje iz baze</button>
-                </div>
-                <div class="rad-sa-clanovima">
-                    <h4 class="podnaslov">Članovi</h4>
-                    <button name="opcija" value="provera_clana" type="submit" class="btn btn-outline-primary">Provera člana</button>
-                    <button name="opcija" value="dodavanje_clana" type="submit" class="btn btn-outline-primary">Dodavanje člana</button>
-                    
-                </div>
+                <form action="index.php" method="get">
+                    <div class="izdavanje-knjiga">
+                        <h4 class="podnaslov">Izdavanje</h4>
+                        <button name="opcija" value="vracanje_knjige" type="submit" class="btn btn-outline-primary">Vraćanje knjige</button>
+                        <button name="opcija" value="izdavanje_knjige" type="submit" class="btn btn-outline-primary">Izdavanje knjige</button>
+                    </div>
+                    <div class="rad-sa-bazom">
+                        <h4 class="podnaslov">Rad sa bazom</h4>
+                        <button name="opcija" value="dodavanje_baza" type="submit" class="btn btn-outline-primary">Dodavanje u bazu</button>
+                        <button name="opcija" value="brisanje_baza" type="submit" class="btn btn-outline-primary">Brisanje iz baze</button>
+                    </div>
+                    <div class="rad-sa-clanovima">
+                        <h4 class="podnaslov">Članovi</h4>
+                        <button name="opcija" value="provera_clana" type="submit" class="btn btn-outline-primary">Provera člana</button>
+                        <button name="opcija" value="dodavanje_clana" type="submit" class="btn btn-outline-primary">Dodavanje člana</button>
+                        
+                    </div>
+                </form>
+
             </div>
-        </div>
-    </form>
+    </div>
 
     <table class="table">
     <thead>
@@ -87,7 +90,6 @@ include "popups.php";
                 INNER JOIN Knjige_Zanrovi ON Knjige_Zanrovi.KnjigaID=Knjige.ID
                 INNER JOIN Zanrovi ON Zanrovi.ZanrID=Knjige_Zanrovi.ZanrID
                 " . $pretraga_WHERE . ";";
-        echo($query);
         if($rezultat = $konekcija->query($query)){
             while($row = $rezultat->fetch_array()){
                 echo("<tr scope='row'>");

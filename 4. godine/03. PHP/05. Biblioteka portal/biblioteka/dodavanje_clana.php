@@ -1,4 +1,9 @@
 <?php
+    if(isset($_GET['opcija']) && $_GET['opcija']=='vracanje'){
+        header("location:./index.php");
+        exit();
+    }
+    
     include "./server.php";
 
     $konekcija = OtvoriKonekciju();

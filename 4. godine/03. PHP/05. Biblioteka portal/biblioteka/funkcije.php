@@ -1,7 +1,7 @@
 <?php
     function DohvatiIzdateKnjige(){
         $konekcija = OtvoriKonekciju();
-
+        $out = "";
         $sql = "
             SELECT Knjige.ID KnjigaID, Knjige.Ime Knjiga, Autori.Ime Autor, EvidencijaIzdavanja.DatumIzdavanja, EvidencijaIzdavanja.DatumOcVracanja, 
                 EvidencijaIzdavanja.ID AS IzdavanjeID, StatusiIzdavanja.Opis
@@ -13,13 +13,13 @@
             ORDER BY EvidencijaIzdavanja.StatusIzdavanja DESC;";
         $rez = $konekcija->query($sql);
         while($row = $rez->fetch_assoc()){
-            echo '<tr>';
-                echo '<td>'. $row['Knjiga'] .'</td>';
-                echo '<td>'. $row['Autor'] .'</td>';
-                echo '<td>'. $row['DatumIzdavanja'] .'</td>';
-                echo '<td>'. $row['DatumOcVracanja'] .'</td>';
-                echo '<td>'. $row['Opis'] .'</td>';
-                echo '  <td>
+            $out .= '<tr>';
+                $out .= '<td>'. $row['Knjiga'] .'</td>';
+                $out .= '<td>'. $row['Autor'] .'</td>';
+                $out .= '<td>'. $row['DatumIzdavanja'] .'</td>';
+                $out .= '<td>'. $row['DatumOcVracanja'] .'</td>';
+                $out .= '<td>'. $row['Opis'] .'</td>';
+                $out .= '  <td>
                             <form action="./vracanje_knjige.php" method="GET">
                                 <input type="hidden" name="clanID" value="' . $_GET['clanID'] . '"/>
                                 <input type="hidden" name="knjigaID" value="'. $row['KnjigaID'] . '"/>
@@ -28,10 +28,10 @@
                                 <button name="vracanje" value="true" type="submit" class="btn btn-outline-success">Vrati knjigu</button>
                             </form>
                         </td>';
-            echo '</tr>';
+            $out .= '</tr>';
         }
-
         ZatvoriKonekciju($konekcija);
+        return $out;
     }
 
     function DohvatiPretragu($ime, $autor, $zanr){
@@ -63,9 +63,6 @@
     function provera_opcije(){
         if(isset($_GET['opcija'])){
             switch($_GET['opcija']){
-                case "vracanje_knjige":
-                    popup_vracanje_knjige();
-                    break;
                 case "izdavanje_knjige":
                     popup_izdavanje_knjige();
                     break;
@@ -82,7 +79,11 @@
                     popup_dodavanje_clana();
                     break;
                 case "status_clana":
-                    popup_status_clana();
+                    popup_status_clana($_GET['clanID']);
+                    break;
+                case "vracanje":
+                    unset($_GET['opcija']);
+                    header("location:./index.php");
                     break;
                 default:
                     unset($_GET['opcija']);
