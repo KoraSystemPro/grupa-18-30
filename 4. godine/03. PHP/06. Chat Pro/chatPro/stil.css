@@ -51,6 +51,7 @@ a:hover {
     border-radius: 10px;
     border: 1px solid #304246;
     box-shadow: 2px 3px 7px #1e231a;
+    overflow-y: auto;
 
 }
 
@@ -80,4 +81,43 @@ a:hover {
     background-color: lightgray;
     color: #283538;
     box-shadow: 2px 3px 5px lightgray;
+}
+
+#poruka{
+    display: flex;
+    margin-top: 10px;
+
+}
+
+#poruka-inicijali{
+    background-color: #1a2224;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#poruka-sadrzaj{
+    background-color: #1a2224;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 80%;
+
+}
+
+#poruka-sadrzaj-tekst{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+#poruka-sadrzaj-vreme{
+    color: #556565;
+    padding-top: 10px;
 }

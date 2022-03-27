@@ -1,6 +1,5 @@
 <?php
     include "./chatPro/lib/server.php";
-
     session_start();
 
     $konekcija = OtvoriKonekciju($hostname, $username, $password, "chat_app");
@@ -27,6 +26,20 @@
         $_SESSION['user'] = $email;
     } else {
         header("location:../login.php");
+    }
+
+    function loginForm(){
+        echo '
+        <div id="login-form">
+            <p>Unesite vaše login podatke</p>
+            <form action="../index.php" method="POST">
+                <label for="email">E-mail</label>
+                <input type="email" name="email" id="email">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" value="Login">
+            </form>
+        </div>  
+        ';
     }
 
 ?>
