@@ -14,11 +14,19 @@
 
 </head>
 <body>
+    <?php
+        session_start();
+        if(!isset($_SESSION['id'])){
+            header("./login.php");
+            exit();
+        }
+    ?>
+
     <div id="wrapper">
         <div id="menu">
             <p class="welcome">Dobrodošli!</p>
             <p class="logout">
-                <a id="exit" href="#">Logout</a>
+                <a id="exit" href="./lib/logout.php">Logout</a>
             </p>
         </div>
         
@@ -40,6 +48,8 @@
             <input type="submit" name="submitmsg" id="submit-message" value="Pošalji">
         </form>
 
+        
     </div>
+
 </body>
 </html>

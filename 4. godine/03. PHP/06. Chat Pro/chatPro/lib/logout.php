@@ -1,7 +1,7 @@
 <?php
     session_start();
-    unset($_SESSION['email']);
-    $_SESSION['valid'] = false;
+    session_destroy();
     
-    header("location:connect.php");
+    header("location:../login.php");
+    exit();
 ?>
