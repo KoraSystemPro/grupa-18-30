@@ -29,6 +29,25 @@ a:hover {
     /* background-color: ; */
 }
 
+div#menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+div.user{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+p.logout{
+    margin-left: 10px;
+}
+
 #wrapper{
     background-color: #6D8160;
     margin: 0 auto;
@@ -113,8 +132,9 @@ a:hover {
 }
 
 #poruka-sadrzaj-tekst{
-    overflow-wrap: break-word;
+    overflow-wrap: normal;
     word-wrap: break-word;
+    overflow-x: hidden;
 }
 
 #poruka-sadrzaj-vreme{

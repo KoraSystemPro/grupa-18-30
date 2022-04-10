@@ -1,6 +1,12 @@
 <?php
     include "./lib/server.php";
     include "./lib/poruka.php";
+    
+    session_start();
+    if(!isset($_SESSION['id'])){
+        header("location:./login.php");
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,20 +20,15 @@
 
 </head>
 <body>
-    <?php
-        session_start();
-        if(!isset($_SESSION['id'])){
-            header("./login.php");
-            exit();
-        }
-    ?>
-
     <div id="wrapper">
         <div id="menu">
             <p class="welcome">Dobrodošli!</p>
-            <p class="logout">
-                <a id="exit" href="./lib/logout.php">Logout</a>
-            </p>
+            <div class="user">
+                <p class="uname"><?php echo $_SESSION['name'] ?></p>
+                <p class="logout">
+                    <a id="exit" href="./lib/logout.php">Logout</a>
+                </p>
+            </div>
         </div>
         
         <div id="chat">
@@ -43,13 +44,44 @@
             ?>
         </div>
 
-        <form name="message" action="./lib/send.php" method="POST">
+        <form name="message" action="" method="POST">
             <input placeholder="Poruka..." type="text" name="poruka" id="text-message">
-            <input type="submit" name="submitmsg" id="submit-message" value="Pošalji">
+            <input type="button" onclick="posalji_poruku()" name="submitmsg" id="submit-message" value="Pošalji">
         </form>
 
         
     </div>
 
+    <script>
+        setInterval(get_messages, 1000);
+
+        function get_messages(){
+            let request = new XMLHttpRequest();
+            request.open("GET", "./lib/update.php", true);
+
+            request.onload = function(){
+                if(request.readyState == 4 && request.status == 200){
+                    let chat = document.getElementById("chat");
+                    chat.innerHTML = request.response;
+                    // chat.scrollTop = chat.scrollHeight
+                } else {
+                    console.log("Not loaded")
+                }
+            }              
+            request.send();
+        }
+        function posalji_poruku(){
+            $request = new XMLHttpRequest();
+            
+            $poruka = document.getElementById("text-message").value;
+            document.getElementById("text-message").value = "";
+            $data = new FormData();
+            $data.append("poruka", $poruka);
+            
+            $request.open("POST", "./lib/send.php", true);
+            $request.send($data);
+        }
+
+    </script>
 </body>
 </html>

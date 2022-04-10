@@ -1,23 +1,39 @@
 <?php
-    include "./chatPro/lib/server.php";
-
+    include "./server.php";
+    
+    $hostname = "localhost";
+    $username = "root";
+    $password = "";
     $konekcija = OtvoriKonekciju($hostname, $username, $password, "chat_app");
 
     // Dohvatamo podatke iz forme
+    $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['pwd'];
     
-    // Pravimo i pokrecemo query
+    // Proveravamo da li postoji taj user
+    $sql = "SELECT * FROM Users 
+            WHERE Email='$email';
+            ";
+    $rez = $konekcija->query($sql);
+    // Ako vec postoji takav user
+    if($rezultat->num_rows == 1){
+        echo ('0');
+        ZatvoriKonekciju($konekcija);
+        exit();
+    }
+
+    // Ako ne postoji, napravi ga
     $sql = "
-        INSERT INTO Users (Email, Password) 
-        VALUES ('$email', '$password');
+        INSERT INTO Users (Name, Email, Password) 
+        VALUES ('$name', '$email', '$password');
         ";
     $rez = $konekcija->query($sql);
     // Provera da li se uspesno izvrsio query
     if($rez == true){
-        echo("Uspesno je dodat novi korisnik!");
+        echo("1");
     } else {
-        echo("Greska!" . $sql . "<br>" . $konekcija->error);
+        echo("-1");
     }
 
     // Zatvaranje konekcije
