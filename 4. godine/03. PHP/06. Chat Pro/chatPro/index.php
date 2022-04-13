@@ -40,6 +40,13 @@
                     $inicijali = substr($row['Name'], 0, 2);
                     ispisi_poruku($inicijali, $row['Content'], $row['TimeOfSending']);
                 }
+
+                // Dohvatamo datum najnovije poruke
+                $sql = "SELECT `TimeOfSending` FROM `Messages` ORDER BY `TimeOfSending` DESC LIMIT 1;";
+                $rez = $kon->query($sql);
+                $date = $rez->fetch_assoc()['TimeOfSending'];
+                setcookie("poslednja_poruka", $date);
+
                 ZatvoriKonekciju($kon);
             ?>
         </div>
@@ -61,9 +68,14 @@
 
             request.onload = function(){
                 if(request.readyState == 4 && request.status == 200){
-                    let chat = document.getElementById("chat");
-                    chat.innerHTML = request.response;
-                    // chat.scrollTop = chat.scrollHeight
+                    if(request.responseText == '1'){
+                        // Imamo najnoviju poruku
+                        
+                    } else {
+                        let chat = document.getElementById("chat");
+                        chat.innerHTML = request.response;
+                        // chat.scrollTop = chat.scrollHeight
+                    }
                 } else {
                     console.log("Not loaded")
                 }

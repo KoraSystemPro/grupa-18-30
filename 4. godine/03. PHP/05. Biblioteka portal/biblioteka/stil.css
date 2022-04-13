@@ -10,7 +10,14 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 40px;
 }
+#opcije-forma{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
 .pretraga{
     width: 40%;
 }
@@ -121,4 +128,7 @@ body{
     word-wrap: break-word;
     hyphens: auto;
     white-space: normal;
+}
+.input-group{
+    width: 300px;
 }

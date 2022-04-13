@@ -48,21 +48,23 @@ include "popups.php";
         </form>
             <div class="opcije">
                 <form action="index.php" method="get">
-                    <div class="izdavanje-knjiga">
-                        <h4 class="podnaslov">Izdavanje</h4>
-                        <button name="opcija" value="vracanje_knjige" type="submit" class="btn btn-outline-primary">Vraćanje knjige</button>
-                        <button name="opcija" value="izdavanje_knjige" type="submit" class="btn btn-outline-primary">Izdavanje knjige</button>
-                    </div>
-                    <div class="rad-sa-bazom">
-                        <h4 class="podnaslov">Rad sa bazom</h4>
-                        <button name="opcija" value="dodavanje_baza" type="submit" class="btn btn-outline-primary">Dodavanje u bazu</button>
-                        <button name="opcija" value="brisanje_baza" type="submit" class="btn btn-outline-primary">Brisanje iz baze</button>
-                    </div>
-                    <div class="rad-sa-clanovima">
-                        <h4 class="podnaslov">Članovi</h4>
-                        <button name="opcija" value="provera_clana" type="submit" class="btn btn-outline-primary">Provera člana</button>
-                        <button name="opcija" value="dodavanje_clana" type="submit" class="btn btn-outline-primary">Dodavanje člana</button>
-                        
+                    <div id="opcije-forma">
+                        <div class="izdavanje-knjiga">
+                            <h4 class="podnaslov">Izdavanje</h4>
+                            <button name="opcija" value="vracanje_knjige" type="submit" class="btn btn-outline-primary">Vraćanje knjige</button>
+                            <button name="opcija" value="izdavanje_knjige" type="submit" class="btn btn-outline-primary">Izdavanje knjige</button>
+                        </div>
+                        <div class="rad-sa-bazom">
+                            <h4 class="podnaslov">Rad sa bazom</h4>
+                            <button name="opcija" value="dodavanje_baza" type="submit" class="btn btn-outline-primary">Dodavanje u bazu</button>
+                            <button name="opcija" value="brisanje_baza" type="submit" class="btn btn-outline-primary">Brisanje iz baze</button>
+                        </div>
+                        <div class="rad-sa-clanovima">
+                            <h4 class="podnaslov">Članovi</h4>
+                            <button name="opcija" value="provera_clana" type="submit" class="btn btn-outline-primary">Provera člana</button>
+                            <button name="opcija" value="dodavanje_clana" type="submit" class="btn btn-outline-primary">Dodavanje člana</button>
+                            
+                        </div>
                     </div>
                 </form>
 
