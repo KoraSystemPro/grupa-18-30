@@ -34,11 +34,11 @@
         <div id="chat">
             <?php
                 $kon = OtvoriKonekciju("localhost", "root", "", "chat_app");
-                $sql = "SELECT Users.Name, Content, TimeOfSending FROM Messages INNER JOIN Users ON Users.ID=Messages.SenderID ORDER BY TimeOfSending ASC;";
+                $sql = "SELECT Users.ID, Users.Name, Content, TimeOfSending FROM Messages INNER JOIN Users ON Users.ID=Messages.SenderID ORDER BY TimeOfSending ASC;";
                 $rez = $kon->query($sql);
                 while($row = $rez->fetch_assoc()){
-                    $inicijali = substr($row['Name'], 0, 2);
-                    ispisi_poruku($inicijali, $row['Content'], $row['TimeOfSending']);
+                    $inicijali = substr($row['Name'], 0, 2);                      
+                    ispisi_poruku($inicijali, $row['Content'], $row['TimeOfSending'], $row['ID']);
                 }
 
                 // Dohvatamo datum najnovije poruke
@@ -68,12 +68,12 @@
 
             request.onload = function(){
                 if(request.readyState == 4 && request.status == 200){
-                    if(request.responseText == '1'){
+                    if(request.responseText == ''){
                         // Imamo najnoviju poruku
                         
                     } else {
                         let chat = document.getElementById("chat");
-                        chat.innerHTML = request.response;
+                        chat.innerHTML += request.response;
                         // chat.scrollTop = chat.scrollHeight
                     }
                 } else {
